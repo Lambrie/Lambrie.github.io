@@ -16,7 +16,7 @@
 title: Lambrie
 description: > # this means to ignore newlines until "baseurl:"
   Material theme based on <a href="http://materializecss.com">Materialize.css</a> for jekyll sites
-baseurl: "/matjek"
+baseurl: "/"
 url: "https://lambrie.github.io"
 permalink: /:year/:month/:day/:title
 repository: Lambrie/lambrie.github.io
@@ -26,7 +26,7 @@ paginate: 5
 github_profile: "https://github.com/Lambrie"
 user: "Lambrie Steyn"
 user_email: "lambrie45@gmail.com"
-contact_url: "https://goo.gl/tVljbV"
+contact_url: ""
 google_tracking_id: "UA-162911599-1"
 google_site_verification: "UA-162911599-1"
 disqus_shortname: "Lambo"

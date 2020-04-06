@@ -13,7 +13,8 @@
     <link rel="shortcut icon" type="image/x-icon" href="{{site.baseurl}}/assets/res/favicon.ico">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.min.css">
     <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="{{site.baseurl}}/assets/css/main.css">
+	<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <script src="https://use.fontawesome.com/30fff9b2be.js"></script>
     {% for css in layout.css %}
     {% if css contains "//" %}
     <link rel="stylesheet" href="{{css}}">
@@ -53,7 +54,12 @@
             <div class="background"></div>
             <a href="{{site.github_profile}}" target="_blank"><img class="circle z-depth-2" src="{{site.baseurl}}/assets/res/user.png"></a>
             <span class="white-text name">{{site.user}}</span>
-            <span class="white-text email">{{site.user_email}}</span>
+            <span class="white-text">
+				<a class="icon" target="_blank" href="https://www.facebook.com/lambrie.steyn"><i class="fa fa-facebook"></i></a>
+				<a class="icon" target="_blank" href="https://www.linkedin.com/in/lambrie-steyn-4a2bb351"><i class="fa fa-linkedin"></i></a>
+				<a class="icon" target="_blank" href="https://stackoverflow.com/users/4285029/lambo"><i class="fa fa-stackoverflow"></i></a>
+				<a class="icon" target="_blank" href="{{site.github_profile}}"><i class="fa fa-github"></i></a>
+			</span>
           </div>
         </li>
         <li><a class="waves-effect" href="{{site.baseurl}}/"><i class="material-icons">home</i>Home</a></li>

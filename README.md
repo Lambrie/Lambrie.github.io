@@ -1,2 +1,2 @@
-# Lambrie.github.io
+# lambrie.github.io
 Personal website

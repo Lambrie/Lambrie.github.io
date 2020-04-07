@@ -44,3 +44,5 @@ exclude:
 sass:
   style: compressed
 future: true
+
+# Credit to MatJek for the template

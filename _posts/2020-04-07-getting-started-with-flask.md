@@ -108,7 +108,7 @@ You can do it through command line
 ```shell
 echo #My first flask app > app.py
 ```
-or open notepad and create a file with a .py extension through file explorer in your project directory.
+or open notepad or your prefered IDE and create a file with a .py extension through file explorer in your project directory.
 
 _You don't need to call it app.py you can call it anything that you would find easy to use, just don't use flask.py, because this would conflict with Flask itself._
 
@@ -160,3 +160,5 @@ This launches a very simple built-in server, which is good enough for testing bu
 So now you can open your browser and type in http://127.0.0.1:5000/ and there you go, your first website up and running on your local machine.
 
 <img src="/assets/res/blogData/flask_hello_world_page.PNG" width="100%">
+
+If you want to shut down the flask web server ctrl + c will shutdown the flask server in the virtual environment

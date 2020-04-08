@@ -159,16 +159,16 @@ This launches a very simple built-in server, which is good enough for testing bu
 
 So now you can open your browser and type in http://127.0.0.1:5000/ and there you go, your first website up and running on your local machine.
 
-![image]({{site.baseurl}}/assets/res/_blog_data/flask_hello_world_page.png)
+![image]({{site.baseurl}}/assets/res/blogData/flask_hello_world_page.PNG)
 
-![image](./assets/res/_blog_data/flask_hello_world_page.png)
+![image](./assets/res/blogData/flask_hello_world_page.PNG)
 
-![image](/assets/res/_blog_data/flask_hello_world_page.PNG)
+![image](/assets/res/blogData/flask_hello_world_page.PNG)
 
-![image](./assets/res/_blog_data/flask_hello_world_page.PNG)
+![image](./assets/res/blogData/flask_hello_world_page.PNG)
 
-![image](../assets/res/_blog_data/flask_hello_world_page.PNG)
+![image](../assets/res/blogData/flask_hello_world_page.PNG)
 
-![image](././assets/res/_blog_data/flask_hello_world_page.PNG)
+![image](././assets/res/blogData/flask_hello_world_page.PNG)
 
-![image](.//../assets/res/_blog_data/flask_hello_world_page.PNG)
+![image](.//../assets/res/blogData/flask_hello_world_page.PNG)

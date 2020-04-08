@@ -2,19 +2,26 @@
 layout: post
 title:  "Getting started with Flask"
 date:   2020-04-07 09:06:13 +0200
-categories: Python
-tags: Python Flask "Web Development" PyCharm
+categories: Python-Flask
+tags: Python Flask Web venv
 ---
 So, you want to create a website? Look no further than Python and the Flask web framework.
 
 Are you looking at creating a static website, that just services static information to your audience, or a full-fledged website with dynamic content? Never mind Flask can do it all. Okay maybe using Flask to serve static web pages might be a bit of overkill, but it`s always a good start into web development and it provides you with the opportunity to scale a static site into a dynamic information asset for yourself or organisation.
 
-For this starter tutorial to make sense I would assume you have some basic knowledge of the following components, else following the links to gain a basic understanding of these topics before continuing:
-* [Python](https://www.google.com "What is Python")
-* [PIP](https://www.google.com "What is PIP")
-* [HTML](https://www.google.com "What is HTML")
+### What is Flask
+Flask is a micro lightweight web framework developed for Python. Calling Flask lightweight doesn't in any fashion mean it's inferior to any other framework, in fact it provides developers with way more flexibility during development. 
 
-If you are comfortable with the above topics you can skip over and get started below
+Larger frameworks such as Django will come with a ton of components built-in in the framework such authentication, URL routing, database schema migration, functional admin interface, built-in template engine, ORM system, and bootstrapping tool. Flask being light weight doesn't come standard with these components, you can build custom component or install any of the flask extensions on PyPI to assist you in your project.
+
+Flask is currently used by several high-traffic websites. Flask is usually used to accelerate development of simple websites that use static content. However, the developers still have option to extend and customize Flask according to precise project requirements.
+
+### Tutorial Overview
+In this tutorial we will discuss the following:
+* What are web frameworks
+* Creating Virtual Environments for your projects
+* Installing Flask
+* Creating your first Flask web application
 
 ### What is a web framework
 A Web framework is a collection of packages or modules which allow developers to write [Web applications](https://wiki.python.org/moin/WebApplications "Web Applications") or services without having to handle such low-level details as protocols, sockets or process/thread management.

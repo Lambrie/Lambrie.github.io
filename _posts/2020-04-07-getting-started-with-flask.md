@@ -165,4 +165,10 @@ So now you can open your browser and type in http://127.0.0.1:5000/ and there yo
 
 ![image](/assets/res/_blog_data/flask_hello_world_page.PNG)
 
-![image](/assets/res/_blog_data/flask_hello_world_page.PNG)
+![image](./assets/res/_blog_data/flask_hello_world_page.PNG)
+
+![image](../assets/res/_blog_data/flask_hello_world_page.PNG)
+
+![image](././assets/res/_blog_data/flask_hello_world_page.PNG)
+
+![image](.//../assets/res/_blog_data/flask_hello_world_page.PNG)

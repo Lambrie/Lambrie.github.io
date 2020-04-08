@@ -5,11 +5,11 @@ date:   2020-04-07 09:06:13 +0200
 categories: Python
 tags: Python Flask "Web Development" PyCharm
 ---
-So you want to create a website? Look no futher than Python and the Flask web framework.
+So, you want to create a website? Look no further than Python and the Flask web framework.
 
-Are you looking at creating a static website, that just services static information to your audience, or a full fledged website with dynamic content. Nevermind Flask can do it all. Okay maybe using Flask to serve static web pages might be a bit of overkill, but it`s always a good start into web development and it provides you with the opportunity to scale a static site into a dynamic information asset for yourself or organisation.
+Are you looking at creating a static website, that just services static information to your audience, or a full-fledged website with dynamic content? Never mind Flask can do it all. Okay maybe using Flask to serve static web pages might be a bit of overkill, but it`s always a good start into web development and it provides you with the opportunity to scale a static site into a dynamic information asset for yourself or organisation.
 
-In order for this starter tutorial to make sense I would assume you have some basic knowledge of the following components, else following the links to gain a basic understanding of these topics before contiuning:
+For this starter tutorial to make sense I would assume you have some basic knowledge of the following components, else following the links to gain a basic understanding of these topics before continuing:
 * [Python](https://www.google.com "What is Python")
 * [PIP](https://www.google.com "What is PIP")
 * [HTML](https://www.google.com "What is HTML")
@@ -19,9 +19,9 @@ If you are comfortable with the above topics you can skip over and get started b
 ### What is a web framework
 A Web framework is a collection of packages or modules which allow developers to write [Web applications](https://wiki.python.org/moin/WebApplications "Web Applications") or services without having to handle such low-level details as protocols, sockets or process/thread management.
 
-As a developer using a framework, you typically write code which conforms to some kind of conventions that lets you "plug in" to the framework, delegating responsibility for the communications, infrastructure and low-level stuff to the framework while concentrating on the logic of the application in your own code. This "plugging in" aspect of Web development is often seen as being in opposition to the classical distinction between programs and libraries, and the notion of a "mainloop" dispatching events to application code is very similar to that found in [GUI programming](https://wiki.python.org/moin/GuiProgramming "GUI programming").
+As a developer using a framework, you typically write code which conforms to convention that lets you "plug in" to the framework, delegating responsibility for the communications, infrastructure and low-level stuff to the framework while concentrating on the logic of the application in your own code. This "plugging in" aspect of Web development is often seen as being in opposition to the classical distinction between programs and libraries, and the notion of a "main loop" dispatching events to application code is very similar to that found in [GUI programming](https://wiki.python.org/moin/GuiProgramming "GUI programming").
 
-Generally, frameworks provide support for a number of activities such as interpreting requests (getting form parameters, handling cookies and sessions), producing responses (presenting data as HTML or in other formats), storing data persistently, and so on. Since a non-trivial Web application will require a number of different kinds of abstractions, often stacked upon each other, those frameworks which attempt to provide a complete solution for applications are often known as full-stack frameworks in that they attempt to supply components for each layer in the stack.
+Generally, frameworks provide support for several activities such as interpreting requests (getting form parameters, handling cookies and sessions), producing responses (presenting data as HTML or in other formats), storing data persistently, and so on. Since a non-trivial Web application will require several different kinds of abstractions, often stacked upon each other, those frameworks which attempt to provide a complete solution for applications are often known as full-stack frameworks in that they attempt to supply components for each layer in the stack.
 [Python Wiki](https://wiki.python.org/moin/WebFrameworks "Python Wiki")
 
 ### Create a virtual environment
@@ -30,63 +30,54 @@ A virtual environment is used to manage the dependencies in your project. So the
 The more Python projects you have, the more likely it is that you need to work with different versions of Python libraries, or even different Python versions itself. Newer versions of libraries for one project can break compatibility in another project, therefore it helps a great deal segregate each project within its own virtual environment.
 Therefore, virtual environments are independent groups of Python libraries, one for each project preferably. Packages installed for one project will not affect other projects or the operating system’s packages.
 
-For example just to run flask the following dependancies will be created to allow the flask package to work as intended:
-* **Werkzeug** implements WSGI, the standard Python interface between applications and servers.
-* **Jinja** is a template language that renders the pages your application serves.
-* **MarkupSafe** comes with Jinja. It escapes untrusted input when rendering templates to avoid injection attacks.
-* **ItsDangerous** securely signs data to ensure its integrity. This is used to protect Flask’s session cookie.
-* **Click** is a framework for writing command line applications. It provides the flask command and allows adding custom management commands.
-
-You don't want to be managaing all these dependancies manually, it will become messy as your applicatioj grows and gets deployed
-
 #### How to create a virtual environment
-For this tutorial I assume you already have Python installed, else follow this quick video guide [Install Python Video](https://www.youtube.com/watch?v=tUgCiB17OZw&t=195s "Youtube Video")
+For this tutorial I assume you already have Python installed, else follow this quick video guide [How to Install Python Video](https://www.youtube.com/watch?v=tUgCiB17OZw&t=195s "YouTube Video")
 
 Create a new directory for your project, open command prompt and cd to your preferred project directory. I will call this project flask_hello_world
 ```shell
-C:\\Users\\Lambrie\\Documents\\projects\\python\\flask>mkdir flask_hello_world
+mkdir flask_hello_world
 ```
 
 cd into your new project directory
 ```shell
-C:\\Users\\...\\flask>cd flask_hello_world
-C:\\Users\\...\\flask\\flask_hello_world>
+cd flask_hello_world
+C:\...\flask\flask_hello_world>
 ```
 
 Issue the following command to create a virtual environment
 ```shell
-C:\\Users\\...\\flask\\flask_hello_world>python -m venv venv
+python -m venv venv
 ```
 This command will create a virtual environment using the venv package and will store the environment in the directory specified in the last parameter which will be venv also. Virtual Environment (venv) comes as standard module with the Python installation.
 
-_If you encounter any issue ensure that python is set in your PATH and make sure of the naming conevtion used other examples include py and python3._
+_If you encounter any issue ensure that python is set in your PATH and make sure of the naming convention used other examples include py and python3._
 
-**It is highly recommended to create a virtual environement for every project as every project will have different set of dependencies and versions required**
+**It is highly recommended to create a virtual environment for every project as every project will have different set of dependencies and versions required**
 
 In your directory you will now notice a new directory called venv
 ```shell
-C:\\Users\\...\\flask\\flask_hello_world>dir
-2020/04/07  10:49    <DIR>          .
-2020/04/07  10:49    <DIR>          ..
-2020/04/07  10:49    <DIR>          venv
+dir
+2020/04/07  10:49    <DIR>    .
+2020/04/07  10:49    <DIR>    ..
+2020/04/07  10:49    <DIR>    venv
 ```
 
 #### Activate the virtual environment
 The virtual environment always needs to be activated first before it can be used.
 
 ```shell
-C:\\Users\\...\\flask\\flask_hello_world>venv\\Scripts\\activate
+venv\Scripts\activate
 ```
 
-You will now notice the folloing in your command line when the environment is activated
+You will now notice the following in your command line when the environment is activated
 ```shell
 (venv) C:\\Users\\...\\flask\\flask_hello_world>
 ```
-The name of the virtual environement as defined above will appear in the command line.
+The name of the virtual environment as defined above will appear in the command line.
 
 In order to deactivate a virtual environment, just type deactivate in your terminal.
 ```shell
-(venv) C:\\Users\\...\\flask\\flask_hello_world>deactivate
+deactivate
 ```
 Your terminal will change 
 ```shell
@@ -95,32 +86,26 @@ C:\\Users\\...\\flask\\flask_hello_world>
 _Follow the Flask documentation for [instructions]("https://flask.palletsprojects.com/en/1.1.x/installation/#virtual-environments") other operating systems_
 
 ### Install Flask
-We are going to use PIP to install the Flask package from [PyPI](https://pypi.org/) (Python Package Index) first. The official Flask documentation can be acces through this link also [Flask Documentation](https://flask.palletsprojects.com/en/1.1.x/ "Flask documentation")
+We are going to use PIP to install the Flask package from [PyPI](https://pypi.org/) (Python Package Index) first. The official Flask documentation can be access through this link also [Flask Documentation](https://flask.palletsprojects.com/en/1.1.x/ "Flask documentation")
 
 Ensure your virtual environment is activated. Then execute pip install with the flask package name from [PyPI](https://pypi.org/project/Flask/ "Download Flask Package") 
 ```shell
-(venv) C:\\Users\\...\\flask\\flask_hello_world>pip install flask
+pip install flask
 ```
 
-#### Setting up PyCharm Community for Flask
-
-
-#### Setting up PyCharm Proffesional for Flask
-
-
 ### Create your first application
-In order to create our first project, we must now create the main python script to execute the appliation from.
+In order to create our first project, we must now create the main python script to execute the application from.
 
 You can do it through command line
 ```shell
-(venv) C:\\Users\\...\\flask\\flask_hello_world>echo #My first flask app > app.py
+echo #My first flask app > app.py
 ```
-or open notepad and create a file with a .py extention through file explorer in your project directory.
+or open notepad and create a file with a .py extension through file explorer in your project directory.
 
-_You don't need to call it app.py your can call it anything that you would find easy to use, just don't use flask.py, because this would conflict with Flask itself._
+_You don't need to call it app.py you can call it anything that you would find easy to use, just don't use flask.py, because this would conflict with Flask itself._
 
 #### Basic Flask code
-Open the app.py file with your preffered IDE, I will use PyCharm. Type the following code in your app.py file
+Open the app.py file with your preferred IDE, I will use PyCharm. Type the following code in your app.py file
 
 {% highlight python linenos %}
 # My first flask app
@@ -132,39 +117,44 @@ def hello_world():
     return 'Hello, World!'
 {% endhighlight %}
 
-Congratualtions, you just finished writing your code to launch a working website. So how exaclty do these 5 lines generate a website:
+Congratulations, you just finished writing your code to launch a working website. So how exactly do these 5 lines generate a website:
 
 1. First line we import the Flask class from the flask package
 1. We then create an instance of the Flask class called app. In order to create an instance of the class one mandatory argument is required. We then pass the name of the module or package of the application. Once the instance is created it will act as the central registry for the view functions, the URL rules, template configuration and much more. The name of the package is used to resolve resources from inside the package or the folder the module is contained in, therefore we pass the '__name__' parameter as the name of package
-1. We then add the route decorator to specifiy the URL to trigger the following functions
-1. The function is given a name which is also used to generate URLs for that particular function, and returns the message we want to display in the user’s browser.
+1. We then add the route decorator to specify the URL to trigger the following functions
+1. The function is given a name which is also used to generate URLs for that function and returns the message we want to display in the user’s browser.
 
 #### Running your first flask website
-To run the application you can either use the flask command or python’s -m switch with Flask. Before you can do that you need to tell your terminal the application to work with by setting the FLASK_APP environment variable
+To run the application, you can either use the flask command or python’s -m switch with Flask. Before you can do that you need to tell your terminal the application to work with by setting the FLASK_APP environment variable
 ```shell
-(venv) C:\\Users\\...\\flask\\flask_hello_world>set FLASK_APP=app.py
-(venv) C:\\Users\\...\\flask\\flask_hello_world>flask run
- * Environment: production
+set FLASK_APP=app.py
+set FLASK_ENV=development
+flask run
+ * Environment: development
    WARNING: This is a development server. Do not use it in a production deployment.
    Use a production WSGI server instead.
  * Debug mode: off
  * Running on http://127.0.0.1:5000/
 ```
-Alternatively you can use python -m flask:
+Alternatively, you can use python -m flask:
 ```shell
-(venv) C:\\Users\\...\\flask\\flask_hello_world>set FLASK_APP=app.py
-(venv) C:\\Users\\...\\flask\\flask_hello_world>python -m flask run
- * Environment: production
+set FLASK_APP=app.py
+set FLASK_ENV=development
+python -m flask run
+ * Environment: development
    WARNING: This is a development server. Do not use it in a production deployment.
    Use a production WSGI server instead.
  * Debug mode: off
  * Running on http://127.0.0.1:5000/
 ```
-This launches a very simple builtin server, which is good enough for testing but probably not what you want to use in production
+This launches a very simple built-in server, which is good enough for testing but probably not what you want to use in production
 
-So now you can open up your browser and type in http://127.0.0.1:5000/ and there you go, your first website up and running on your local machine.
-![Brower]({{site.baseurl}}/assets/res/_blog_data/flask_hello_world_page.png)
-![Brower](./assets/res/_blog_data/flask_hello_world_page.png)
-![Brower](/assets/res/_blog_data/flask_hello_world_page.png)
+So now you can open your browser and type in http://127.0.0.1:5000/ and there you go, your first website up and running on your local machine.
 
+![image]({{site.baseurl}}/assets/res/_blog_data/flask_hello_world_page.png)
 
+![image](./assets/res/_blog_data/flask_hello_world_page.png)
+
+![image](/assets/res/_blog_data/flask_hello_world_page.png)
+
+![image](/assets/res/_blog_data/flask_hello_world_page.png)

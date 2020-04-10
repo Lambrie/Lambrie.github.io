@@ -1,11 +1,11 @@
 ---
 layout: post
-title:  "Create a RESTful api with Flask and flask_restful"
+title:  "Create a RESTful API with Flask and Flask_RESTful"
 date:   2020-04-07 09:06:13 +0200
 categories: Python-Flask
 tags: Python Flask Web venv
 ---
-Create a flask RESTful API using the flask_restful package with Flask.
+Create a flask RESTful API using the Flask_RESTful package with Flask.
 
 In this tutorial we will build a basic RESTfull web service that will serve the current time and date, based on your location.
 
@@ -21,9 +21,9 @@ API, which stands for Application Programming Interface, is an interface that de
 
 APIs are the defined interfaces through which interactions happen between an enterprise and applications that use its assets, which also is a Service Level Agreement (SLA) to specify the functional provider and expose the service path or URL for its API users. An API approach is an architectural approach that revolves around providing a program interface to a set of services to different applications serving different types of consumers.
 
-When used in the context of web development, an API is typically defined as a set of specifications, such as Hypertext Transfer Protocol (HTTP) request messages, along with a definition of the structure of response messages, usually in an Extensible Markup Language (XML) or JavaScript Object Notation (JSON) format. 
+When used in the context of web development, an API is typically defined as a set of specifications, such as Hypertext Transfer Protocol (HTTP) request messages, along with a definition of the structure of response messages, usually in an Extensible Markup Language (XML) or JavaScript Object Notation (JSON) format.
 
-An example might be a shipping company API that can be added to an eCommerce-focused website to facilitate ordering shipping services and automatically include current shipping rates, without the site developer having to enter the shipper's rate table into a web database. 
+An example might be a shipping company API that can be added to an eCommerce-focused website to facilitate ordering shipping services and automatically include current shipping rates, without the site developer having to enter the shipper's rate table into a web database.
 
 APIs have different design style:
 *RESTful
@@ -34,18 +34,18 @@ APIs have different design style:
 
 For a better understanding about the differences, please read this [article](https://nordicapis.com/when-to-use-what-rest-graphql-webhooks-grpc/)
 
-In plain english you can build an api to produce data that other systems can consume, or you can build an api that can consume data from other systems in your own application. 
+In plain english you can build an api to produce data that other systems can consume, or you can build an api that can consume data from other systems in your own application.
 
-In this example we will produce data for other systems to use through a RESTful API. Our API will be waiting to be invoked by en external party, which will provide us with a country name, and we will send back the time for that country.
+In this example we will produce data for other systems to use through a RESTful API. Our API will be waiting to be invoked by en external party, which will provide us with a capital city name, and we will send back the time for that country. In addition we will also have API`s available to obtain all the available capital cities and also a function to retrieve all capital cities by continent.
 
 ### Basic API Design
 
 In order for us to accept a request for data from another system, we must be able to provide them with an adres where the information can be obtained from. A URL (uniform resource locator) will need to be provided to any consumer to be able to obtain the data that we will be providing.
-The url will consist out of the following components: 
+The url will consist out of the following components:
 * server_host       The physical server location, this can either be a DSN name or an IP address. In our case whilst still in development we will be hosting on our local machine adress 172.0.0.1 / localhost
 * server_port       The port on which the api will be hosted. In our case during development we will be hosting on port 5000
-* time_by_country	The time_by_country will be the endpoint, which will describe which function we need to perform
-* {input_value}		The name of the country as input
+* time_by_city	The time_by_country will be the endpoint, which will describe which function we need to perform
+* {input_value}		The name of the capital city as input
 * ?				    Additional query parameters can be added to provide extra capabilities for the function
 * format=""			In this case the user can define the format in which they expect to receive the output ex. "dd-mm-yyyy HH:MM:SS"
 
@@ -53,20 +53,20 @@ _The HTTP method used will also determine the layout of the adres._
 
 Our example will look like this during development:
 ```
-http://127.0.0.1:5000/time_by_country/ZA?format="dd-mm-yyyy HH-MM-SS"
+http://127.0.0.1:5000/time_by_city/Johannesburg?format="dd-mm-yyyy HH-MM-SS"
 ```
 
 and once deployed we would expect it to look somethong like this:
 ```
-http://lambrie.github.io:5000/time_by_country/ZA?format="dd-mm-yyyy HH-MM-SS"
+http://lambrie.github.io:5000/time_by_city/Johannesburg?format="dd-mm-yyyy HH-MM-SS"
 ```
 
 For a RESTful API we will also need to assign a method to each adres. The following methods are available:
-GET		- Use GET requests to retrieve resource representation/information only – and not to modify it in any way.
-POST	- Use POST APIs to create new subordinate resources
-PUT		- Use PUT APIs primarily to update existing resource
-DELETE	- As the name applies, DELETE APIs are used to delete resources
-PATCH	- Use PATCH requests to make partial update on a resource
+* GET		- Use GET requests to retrieve resource representation/information only – and not to modify it in any way.
+* POST	- Use POST APIs to create new subordinate resources
+* PUT		- Use PUT APIs primarily to update existing resource
+* DELETE	- As the name applies, DELETE APIs are used to delete resources
+* PATCH	- Use PATCH requests to make partial update on a resource
 
 
 We will not be making any modifiactions to data therefore we will being using the GET method for our API.
@@ -98,13 +98,7 @@ For this project we will need to install the following packages:
 
 ```shell
 pip install flask
-```
-
-```shell
 pip install Flask-RESTful
-```
-
-```shell
 pip install pytz
 ```
 
@@ -122,7 +116,7 @@ import os
 ##### Create config code file - config.py
 Create a config.py file also within your project directory root.
 
-We will also setup a config file to house all our configurations, which can be used accross mutiple environments. 
+We will also setup a config file to house all our configurations, which can be used accross mutiple environments.
 We will setup the config file with 3 environements:
 * Production
 * Testing
@@ -148,13 +142,13 @@ class Config(object):
     SECRET_KEY = "My$uper$ecretKey4Now"
     SERVER_TIME_ZONE = "Africa/Johannesburg"
     DEFAULT_DATETIME_FORMAT = "%Y-%m-%d %H:%M:%S"
-	
+
 '''
     Each environment will be a class that inherets from the main class config
-    
+
     Configurations that will be the same across all environment will go into config,
     while configuration that are specfic to an environment will go into the relevant environment below
-    
+
 '''
 
 class Production(Config):
@@ -177,21 +171,27 @@ from config import Config
 
 app = Flask(__name__)
 app.config.from_object(os.getenv('Environment_Config'))
+
+api = Api(app)
 ```
 
 Flask has a built-in function to retrieve configurations from an object using the config.from_object function. In this case we will pass the location of the config class to the built-in function, by calling the os.getenv('Environment_Config') function.
 
 In order for us to utilize the flask-restful extension package we need to initialize the flask-restful package with the flask object as the parent from which it will need to inheret from.
-```python
-api = Api(app)
-```
+
+#### Resources
 
 The main building block provided by Flask-RESTful are resources. Resources are built on top of Flask pluggable views, giving you easy access to multiple HTTP methods just by defining methods on your resource.
-Therefore we need to create our own resources and add them to the api. This is very usefull as we can logically seperate different functions our application need to perform and make sure that code performing similar functions are logically grouped. 
+Therefore we need to create our own resources and add them to the api. This is very usefull as we can logically seperate different functions our application need to perform and make sure that code performing similar functions are logically grouped.
 
-_We can split each resource out into its own file also within a resources directory, which can also make it easier to manage as you application scales_
+_We can split each resource out into its own file also within a resources directory, which can also make it easier to manage as your application scales_
 
-#### Show all major capital cities
+We will be creating the following functions in our API aplication:
+* Return a list of all capital cities
+* Return a list of capital cities by continent
+* Return the curent date and time for any city on the list
+
+##### Return a list of all capital cities
 Lets first create an API to show all available capital cities for which we have can return the time for currently
 
 In order to do this we will create a class called All_Capital_Cities, which will inheret from Resources, which we imported from flask_restful above
@@ -200,30 +200,36 @@ class All_Capital_Cities(Resource):
     def get(self):
         cities = [city.split("/")[1].replace('_',' ').title() for city in all_timezones] # List Comprehension
         return {"cities":cities}
-    
+
     def post(self):
         pass
-    
+
     def put(self):
         pass
-    
+
     def delete(self):
         pass
 ```
 
 Above you will see that we define each http method within the class (resource, in this context), as discussed during the design section. Because we will only be returning data and not be making any changes we only need the get method.
 
-The get method will get the list of all cities listed in the all_timezones list, which we import from the pytz package. 
-We will then loop through the list and stript out the continent from the name using the split function. We can easliy split out the continent because we know the format of the list and we know that it is consitent all the way through. 
+The get method will get the list of all cities listed in the all_timezones list, which we import from the pytz package.
+We will then loop through the list and stript out the continent from the name using the split function. We can easliy split out the continent because we know the format of the list and we know that it is consitent all the way through.
 The following logic will then be applied on each iteration:
-* Always return the second element at position *1* 
+* Always return the second element at position *1*
 * Check for any underscores and use the *replace* function to replace it with spaces, to make the name user friendly to read, ex. "new_york" will become "new york"
 * Use the *title* function to format the casing, ex. "new york" will become "New York"
 
 Watch this video to learn more about [List Comprehension](https://youtu.be/P39Fqjqv5qY)
 
-Then we need to register the resource we just defined as a class to the api instance
+Then we need to register the resource we just defined as a class to the api instance in the app.py file
 
 ```python
+.
+.
 api.add_resource(All_Capital_Cities, '/api/v1.0/capital_cities>', endpoint="get_all_capital_cities")
+.
+.
 ```
+
+##### Return a list of capital cities by continent

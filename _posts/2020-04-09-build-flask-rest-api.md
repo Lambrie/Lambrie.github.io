@@ -139,17 +139,15 @@ Environment variables are very useful when it comes to managing configurations a
 Within your config.py file add
 ```python
 class Config(object):
-    SECRET_KEY = "My$uper$ecretKey4Now"
-    SERVER_TIME_ZONE = "Africa/Johannesburg"
-    DEFAULT_DATETIME_FORMAT = "%Y-%m-%d %H:%M:%S"
-
-'''
+    '''
     Each environment will be a class that inherets from the main class config
 
     Configurations that will be the same across all environment will go into config,
     while configuration that are specfic to an environment will go into the relevant environment below
-
-'''
+    ''''
+    SECRET_KEY = "My$uper$ecretKey4Now"
+    SERVER_TIME_ZONE = "Africa/Johannesburg"
+    DEFAULT_DATETIME_FORMAT = "%Y-%m-%d %H:%M:%S"
 
 class Production(Config):
     FLASK_ENV = 'production'
@@ -167,12 +165,14 @@ class Development(Config):
 #### Initiliaze Flask and Flask-RESTful
 In order to initialze Flask we need to provide the required configuration for Flask to start up. So we will need to import the config.py file with the Config class into our app.py file to initiliaze a flask instance with the configuartions specified for the environment within which we are going to work in.
 ```python
+.
 from config import Config
 
 app = Flask(__name__)
 app.config.from_object(os.getenv('Environment_Config'))
 
 api = Api(app)
+.
 ```
 
 Flask has a built-in function to retrieve configurations from an object using the config.from_object function. In this case we will pass the location of the config class to the built-in function, by calling the os.getenv('Environment_Config') function.
@@ -196,6 +196,7 @@ Lets first create an API to show all available capital cities for which we have 
 
 In order to do this we will create a class called All_Capital_Cities, which will inheret from Resources, which we imported from flask_restful above
 ```python
+.
 class All_Capital_Cities(Resource):
     def get(self):
         cities = [city.split("/")[1].replace('_',' ').title() for city in all_timezones] # List Comprehension
@@ -209,6 +210,7 @@ class All_Capital_Cities(Resource):
 
     def delete(self):
         pass
+.
 ```
 
 Above you will see that we define each http method within the class (resource, in this context), as discussed during the design section. Because we will only be returning data and not be making any changes we only need the get method.
@@ -226,9 +228,7 @@ Then we need to register the resource we just defined as a class to the api inst
 
 ```python
 .
-.
 api.add_resource(All_Capital_Cities, '/api/v1.0/capital_cities>', endpoint="get_all_capital_cities")
-.
 .
 ```
 

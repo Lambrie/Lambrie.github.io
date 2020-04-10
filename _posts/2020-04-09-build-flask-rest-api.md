@@ -197,6 +197,8 @@ Lets first create an API to show all available capital cities for which we have 
 In order to do this we will create a class called All_Capital_Cities, which will inheret from Resources, which we imported from flask_restful above
 ```python
 .
+# Resource classes
+
 class All_Capital_Cities(Resource):
     def get(self):
         cities = [city.split("/")[1].replace('_',' ').title() for city in all_timezones] # List Comprehension
@@ -228,8 +230,42 @@ Then we need to register the resource we just defined as a class to the api inst
 
 ```python
 .
+# Register Resources
 api.add_resource(All_Capital_Cities, '/api/v1.0/capital_cities>', endpoint="get_all_capital_cities")
 .
 ```
 
 ##### Return a list of capital cities by continent
+
+If we want to return all capital cities per continent, we will need to register a new resource to obtain capital cities by continent.
+
+In the app.py file just below the All_Capital_Cities class, under the "Resource Class" header, we can create a new class called All_Capital_Cities_by_Continent
+
+```python
+# Resource classes
+.
+class All_Capital_Cities_by_Continent(Resource):
+    def get(self, continent):
+        cities = [city.split("/")[1].replace('_',' ').title() for city in all_timezones if continent.title() in city] # List Comprehension
+        return {"continent":cities}
+
+    def post(self):
+        pass
+
+    def put(self):
+        pass
+
+    def delete(self):
+        pass
+.
+```
+
+Again, we will need to register the resource we just defined as a class to the api instance in the app.py file under the "Register Resources" header
+
+```python
+.
+# Register Resources
+api.add_resource(All_Capital_Cities, '/api/v1.0/capital_cities>', endpoint="get_all_capital_cities")
+api.add_resource(All_Capital_Cities_by_Continent, '/api/v1.0/capital_cities_by_continent/<string:continent>', endpoint="get_all_capital_cities_by_continent")
+.
+```

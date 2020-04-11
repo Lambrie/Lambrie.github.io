@@ -3,7 +3,7 @@ layout: post
 title:  "Create a RESTful API with Flask and Flask_RESTful"
 date:   2020-04-07 09:06:13 +0200
 categories: Python-Flask
-tags: Python Flask Web venv
+tags: Python Flask Flask_RESTful Web API
 ---
 Create a flask RESTful API using the Flask_RESTful package with Flask.
 

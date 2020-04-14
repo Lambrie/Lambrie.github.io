@@ -42,31 +42,31 @@ In this example we will produce data for other systems to use through a RESTful 
 
 For us to accept a request for data from another system, we must be able to provide them with an address where the information can be obtained from. A URL (uniform resource locator) will need to be provided to any consumer to be able to obtain the data that we will be providing.
 The URL will consist out of the following components:
-* server_host       The physical server location, this can either be a DSN name or an IP address. In our case whilst still in development we will be hosting on our local machine adress 172.0.0.1 / localhost
-* server_port       The port on which the API will be hosted. In our case during development we will be hosting on port 5000
-* time_by_timezone	The time_by_timezone will be the endpoint, which will describe which function we need to perform, like in this case the function to get the time by time zone name
-* {input_value}		The name of the time zone as input
-* ?				    Additional query parameters can be added to provide extra capabilities for the function
-* format=""			In this case the user can define the format in which they expect to receive the output ex. "dd-mm-yyyy HH:MM:SS"
+* server_host       -	The physical server location, this can either be a DSN name or an IP address. In our case whilst still in development we will be hosting on our local machine adress 172.0.0.1 / localhost
+* server_port       -	The port on which the API will be hosted. In our case during development we will be hosting on port 5000
+* time_by_timezone	-	The time_by_timezone will be the endpoint, which will describe which function we need to perform, like in this case the function to get the time by time zone name
+* {input_value}		-	The name of the time zone as input
+* ?				    -	Additional query parameters can be added to provide extra capabilities for the function
+* format=""			-	In this case the user can define the format in which they expect to receive the output ex. "dd-mm-yyyy HH:MM:SS"
 
 _The HTTP method used will also determine the layout of the address._
 
 Our example will look like this during development:
 ```
-http://127.0.0.1:5000/time_by_timezone/Johannesburg?format="dd-mm-yyyy HH-MM-SS"
+http://127.0.0.1:5000/api/v1.0/time_by_timezone/Johannesburg?format="dd-mm-yyyy HH-MM-SS"
 ```
 
 and once deployed we would expect it to look something like this:
 ```
-http://lambrie.github.io:5000/time_by_timezone/Johannesburg?format="dd-mm-yyyy HH-MM-SS"
+http://lambrie.github.io:5000/api/v1.0/time_by_timezone/Johannesburg?format="dd-mm-yyyy HH-MM-SS"
 ```
 
 For a RESTful API we will also need to assign a method to each address. The following methods are available:
-* GET		Use GET requests to retrieve resource representation/information only – and not to modify it in any way.
-* POST		Use POST APIs to create new subordinate resources
-* PUT		Use PUT APIs primarily to update existing resource
-* DELETE	As the name applies, DELETE APIs are used to delete resources
-* PATCH		Use PATCH requests to make partial update on a resource
+* GET		-	Use GET requests to retrieve resource representation/information only – and not to modify it in any way.
+* POST		-	Use POST APIs to create new subordinate resources
+* PUT		-	Use PUT APIs primarily to update existing resource
+* DELETE	-	As the name applies, DELETE APIs are used to delete resources
+* PATCH		-	Use PATCH requests to make partial update on a resource
 
 We will not be making any modifications to data. Therefore, we will be using the GET method for our API's.
 
@@ -170,7 +170,7 @@ from config import Config
 app = Flask(__name__)
 app.config.from_object(os.getenv('Environment_Config'))
 
-API = Api(app)
+api = Api(app)
 ```
 
 Flask has a built-in function to retrieve configurations from an object using the config.from_object function. In this case we will pass the location of the config class to the built-in function, by calling the os.getenv('Environment_Config') function.
@@ -233,12 +233,12 @@ Then we need to register the resource we just defined as a class to the API inst
 
 ```python
 # Register Resources
-API.add_resource(All_Timezones, '/API/v1.0/timezones', endpoint="get_all_timezones")
+api.add_resource(All_Timezones, '/API/v1.0/timezones', endpoint="get_all_timezones")
 ```
 
 The URL for this API will then be as follow:
 ```
-localhost:5000/API/v1.0/timezones
+localhost:5000/api/v1.0/timezones
 ```
 
 ##### Return the current date and time for any city on the list
@@ -318,14 +318,14 @@ Lastly again, we will need to register the resource we just defined as a class t
 
 ```python
 # Register Resources
-API.add_resource(All_Timezones, '/API/v1.0/timezones', endpoint="get_all_timezones")
-API.add_resource(Time_By_Timezone, '/API/v1.0/time_by_timezone/<string:timezone>', endpoint="get_time_by_timezone")
+api.add_resource(All_Timezones, '/api/v1.0/timezones', endpoint="get_all_timezones")
+api.add_resource(Time_By_Timezone, '/api/v1.0/time_by_timezone/<string:timezone>', endpoint="get_time_by_timezone")
 ```
 
 The URL for this API will then be as follow:
 ```
-localhost:5000/API/v1.0/time_by_city/new_york
-localhost:5000/API/v1.0/time_by_city/new_york?format=%d-%m-%Y %H:%M:%S
+localhost:5000/api/v1.0/time_by_city/new_york
+localhost:5000/api/v1.0/time_by_city/new_york?format=%d-%m-%Y %H:%M:%S
 ```
 
 ### Run the application

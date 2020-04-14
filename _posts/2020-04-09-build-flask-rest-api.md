@@ -165,14 +165,12 @@ class Development(Config):
 #### Initialize  Flask and Flask-RESTful
 In order to initialize Flask, we need to provide the required configuration for Flask to start up. So, we will need to import the config.py file with the Config class into our app.py file to initialize a Flask instance with the configurations specified for the environment within which we are going to work in.
 ```python
-.
 from config import Config
 
 app = Flask(__name__)
 app.config.from_object(os.getenv('Environment_Config'))
 
 API = Api(app)
-.
 ```
 
 Flask has a built-in function to retrieve configurations from an object using the config.from_object function. In this case we will pass the location of the config class to the built-in function, by calling the os.getenv('Environment_Config') function.
@@ -197,7 +195,6 @@ For this endpoint we will not be expecting any input from the consuming system. 
 
 In order to do this, we will create a class called All_Timezones, which will inherit from Resources, which we imported from flask_restful above
 ```python
-.
 # Resource classes
 
 class All_Timezones(Resource):
@@ -218,7 +215,6 @@ class All_Timezones(Resource):
 
     def delete(self):
         pass
-.
 ```
 
 Above you will see that we define each http method within the class (resource, in this context), as discussed during the design section. Because we will only be returning data and not be making any changes we only need the get method.
@@ -236,10 +232,8 @@ The following logic will then be applied on each iteration:
 Then we need to register the resource we just defined as a class to the API instance in the app.py file
 
 ```python
-.
 # Register Resources
 API.add_resource(All_Timezones, '/API/v1.0/timezones', endpoint="get_all_timezones")
-.
 ```
 
 The URL for this API will then be as follow:
@@ -254,8 +248,7 @@ With this final endpoint we will be able to retrieve the current date and time f
 In this case the consumer will need to provide the name of the time zone. We will also add an optional parameter for the consumer to their preferred date time format in which they expect to consume our result.
 
 Again, the same as above we need to create a resource and register the resource to Flask_RESTful, so again within the app.py file
-```Python
-.
+```python
 class Time_By_Timezone(Resource):
     def __init__(self):
         self.parser = self.setupParser()
@@ -296,7 +289,6 @@ class Time_By_Timezone(Resource):
 
     def delete(self):
         pass
-.
 ```
 
 In this case the class will look slightly different to the previous one, as we are initializing this class with the request parser. Because, this endpoint is enabled to accept an additional parameter
@@ -325,11 +317,9 @@ The Flask-RESTful package allows you to define response codes, in this case we r
 Lastly again, we will need to register the resource we just defined as a class to the API instance in the app.py file under the "Register Resources" header
 
 ```python
-.
 # Register Resources
 API.add_resource(All_Timezones, '/API/v1.0/timezones', endpoint="get_all_timezones")
 API.add_resource(Time_By_Timezone, '/API/v1.0/time_by_timezone/<string:timezone>', endpoint="get_time_by_timezone")
-.
 ```
 
 The URL for this API will then be as follow:
@@ -362,13 +352,12 @@ python -m flask run
  * Debug mode: off
  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
 ```
-1. Recommended, __name__ == '__main__'
+1. Recommended option would be to add to the bottom of your app.py scripts and executed in terminal (in same directory as your app.py file)
 ```python
-.
 if __name__ == '__main__':
     app.run()
 ```
-to the bottom of your app.py scripts and executed in terminal (in same directory as your app.py file)
+
 ```shell
 python app.py
 ```
@@ -380,11 +369,11 @@ We can either use an API development/testing tool such as [Postman](https://www.
 
 *Postman*
 <img src="/assets/res/blogData/postman_flask_restful_02.PNG" width="100%">
-
+<br>
 <img src="/assets/res/blogData/postman_flask_restful_01.PNG" width="100%">
 
 *curl*
-```
+```shell
 curl 127.0.0.1:5000/API/v1.0/timezones
 {
     "timezones": [
@@ -397,7 +386,9 @@ curl 127.0.0.1:5000/API/v1.0/timezones
 		"Zulu"
 		]
 }
+```
 
+```shell
 curl 127.0.0.1:5000/API/v1.0/time_by_timezone/new_york?format=%d-%m-%Y %H:%M:%S
 {
     "continent": "America",

@@ -369,7 +369,8 @@ We can either use an API development/testing tool such as [Postman](https://www.
 
 *Postman*
 <img src="/assets/res/blogData/postman_flask_restful_02.PNG" width="100%">
-<br>
+
+
 <img src="/assets/res/blogData/postman_flask_restful_01.PNG" width="100%">
 
 *curl*

@@ -61,7 +61,7 @@ This is a *grey* area, what you consider as fair use might not always be conside
 1. "It's the same as what my browser already does! Scraping a site is not technically different from using a web browser. I could gather data manually, anyway!" 
 *False* - If the Terms & Conditions Service (T&C's) often contain clauses that prohibit crawling/scraping/harvesting and automated uses of their associated services. You're legally bound by those terms and accept them when accessing the website.
 1. "The worse that might happen if I break their Terms & Conditions Service is that I might get banned or blocked."
-This is a *grey* area, in some cases a website might block your IP to their site (permanently/temporary), or your account can be locked, or legal action can be taken against. Cases: Cases: [Facebook v. Pete Warden](https://petewarden.com/2010/04/05/how-i-got-sued-by-facebook/), [LinkedIn Corporation v. Michael George Keating](http://michaelgkeating.com/cant-find-me-on-linkedin-heres-why-i-got-kicked-off/), [LinkedIn Corporation v. Robocog Inc](https://www.docketalarm.com/cases/California_Northern_District_Court/5--14-cv-00068/LinkedIn_Corporation_v._Robocog_Inc/8/)
+This is a *grey* area, in some cases a website might block your IP to their site (permanently/temporary), or your account can be locked, or legal action can be taken against. Cases: [Facebook v. Pete Warden](https://petewarden.com/2010/04/05/how-i-got-sued-by-facebook/), [LinkedIn Corporation v. Michael George Keating](http://michaelgkeating.com/cant-find-me-on-linkedin-heres-why-i-got-kicked-off/), [LinkedIn Corporation v. Robocog Inc](https://www.docketalarm.com/cases/California_Northern_District_Court/5--14-cv-00068/LinkedIn_Corporation_v._Robocog_Inc/8/)
 1. "This is completely unfair! Google has been crawling/scraping the whole web since forever!"
 *True* - But law has apparently nothing to do with fairness. It's based on rules, interpreted by people. Also, most websites want Google to scrape their sites and will not seek legal action against Google, also Google makes use of fair use policies and abide by the robot.txt rules laid out by each site.
 1. "But I used an automated script, so I didn't enter into any contract with the website." & "Terms & Conditions (T&C’s) are not enforceable anyway. They have no legal value."
@@ -94,21 +94,20 @@ The text contained between 2 tags will then be the text that is displayed to the
 ```
 
 The element name inside the tag is case insensitive and can contain the following names:
-* <head>...</head>
-* <title>...</title> 
-* <body>...</body>
-* <header>...</header>
-* <footer>...</footer>
-* <h1>...</h1>
-* <p>...</p>
-* <table>...</table>
-* <div>...</div>
-* <span>...</span>
-* <img>
-* <nav>...</nav>
-* <ul>...</ul>
-* <ol>...</ol>
-* <li>...</li>
+* <head>
+* <title>
+* <body>
+* <header>
+* <footer>
+* <h1>
+* <p>
+* <table>
+* <div>
+* <span>
+* <nav>
+* <ul>
+* <ol>
+* <li>
 
 This is not all the tags available in HTML, but the commonly used once. During this tutorial we will only be using a few of them
 
@@ -119,24 +118,24 @@ The basic layout of an HTML page will be as follow:
 ```html
 <!DOCTYPE html>  
 <html>  
-    <head>
-		<title>Home</title>
-    </head>
-    <body>
-		<nav>
-			<ul>
-				<li>Home</li>
-				<li>About us</li>
-				<li>Contact us</li>
-			</ul>
-		</nav>
-        <h1>My First Web scraper</h1>
-		<p>Hello world</p>
-		<img>
-    <body>
-	<footer>
-		<p>All rights reserved</p>
-	</footer>
+ <head>
+  <title>Home</title>
+ </head>
+ <body>
+  <nav>
+   <ul>
+    <li>Home</li>
+	<li>About us</li>
+	<li>Contact us</li>
+   </ul>
+  </nav>
+  <h1>My First Web scraper</h1>
+  <p>Hello world</p>
+  <img>
+ <body>
+ <footer>
+  <p>All rights reserved</p>
+ </footer>
 </html>
 ```
 This is the basic syntax of an HTML webpage. Tags are wrapped inside one another to provide the required structure:
@@ -196,6 +195,7 @@ Before we start writing our code, we need to understand what it is that we want 
 
 In our case we want to scrape a list of all the GDP figures of all countries. So, we know if will most likely be in a table format and therefore we already know we are going to look for the <table> tag. We now just need to figure out how we are going to identify the exact table we are looking for, because there might be multiple table on this specific web page.
 We are going to use this link to Wikipedia https://en.wikipedia.org/wiki/List_of_countries_by_GDP_(nominal). Paste this link into your favourite browser, let the page load. You can either hit the F12 button directly which will open the html source file for you from the top. Or, you can navigate to the data you are looking for in your browser, right click on it and select "Inspect" (If you are using Chrome). In our case I have scrolled down until I saw a table listing all the countries by GDP, I then right clicked on the heading of table "Per the International Monetary Fund (2019 estimates)".
+
 <img src="/assets/res/blogData/wikipedia_table_inspection.PNG" width="100%">
 
 We can see that the heading we clicked on is wrapped in side a <table> tag. The heading is also wrapped within a <tbody> table body tag within a <tr> table row tag inside a <td> table data tag. These tags are important to consider as it will help us to extract the data we need.

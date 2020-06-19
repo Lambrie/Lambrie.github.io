@@ -55,11 +55,13 @@ Account
 * create_account_user
 * update_account_user
 * get_account_user_by_userId
+
 SMS
 * get_sms
 * send_sms
 * get_sms_bulk
 * send_sms_bulk
+
 Contacts
 * get_contacts_all
 * get_contact
@@ -68,6 +70,7 @@ Contacts
 * update_contact
 * remove_contact_from_group
 * add_contact_to_group
+
 Groups
 * get_groups_all
 * get_group
@@ -76,6 +79,7 @@ Groups
 * delete_group
 * add_group_to_contact
 * remove_group_from_contact
+
 Messages
 * get_all_messages
 * get_message_analyses

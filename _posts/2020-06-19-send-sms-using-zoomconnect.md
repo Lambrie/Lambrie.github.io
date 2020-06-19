@@ -17,9 +17,9 @@ In this tutorial we will discuss the following:
 ### ZoomConnect Module
 ZoomConnect is a South African based company providing simple and reliable access to bulk SMS solutions for companies, organizations, and individuals.
 
-ZoomConnect exposes a number of API's to interact with their platform. The ZoomConnect_sdk module is a Python wrapper for these API's, enabling a developer to use these APIs without struggling through the process of setting up the integration.
+ZoomConnect exposes several API's to interact with their platform. The ZoomConnect_sdk module is a Python wrapper for these API's, enabling a developer to use these APIs without struggling through the process of setting up the integration.
 
-To start using ZoomConnect you must first create an account([ZoomConnect](https://www.zoomconnect.com/app/account/signup "ZoomConnect Signup")). Once an account is create login and genarte an API Token. Remember to keep this token safe and secure.
+To start using ZoomConnect you must first create an account([ZoomConnect](https://www.zoomconnect.com/app/account/signup "ZoomConnect Signup")). Once an account is created login and generate an API Token. Remember to keep this token safe and secure.
 
 Download the [ZoomConnect_sdk](https://pypi.org/project/zoomconnect-sdk/0.0.1/) module using pip:
 ```
@@ -27,14 +27,14 @@ pip install zoomconnect-sdk==0.0.1
 ```
 
 ### Getting started
-Once the package is installed, it is really simple to get going.
+Once the package is installed, it's simple to get going.
 
 Firstly import the zoomconnect-sdk client.
 {% highlight python %}
 from zoomconnect_sdk.client import Client
 {% endhighlight %}
 
-Once the client is imported, we need to initialize the client with a api_token and account email:
+Once the client is imported, we need to initialize the client with an api_token and account email:
 {% highlight python %}
 c = Client(api_token="secret",account_email="secret@keeper.co.za")
 {% endhighlight %}
@@ -45,7 +45,7 @@ accountBalance = c.get_account_balance{}
 print(accountBalance)
 {% endhighlight %}
 
-The client has a number of functions available to execute specific commands on ZoomConnect. The following functions are available:
+The client has several functions available to execute specific commands on ZoomConnect. The following functions are available:
 
 Account
 * get_account_balance
@@ -109,7 +109,7 @@ else:
 {% endhighlight %}
 
 ### Send bulk SMS messages
-ZoomConnect allows bulk messages to be sent also with a single api call.
+ZoomConnect allows bulk messages to be sent also with a single API call.
 
 {% highlight python %}
 from zoomconnect_sdk.client import Client

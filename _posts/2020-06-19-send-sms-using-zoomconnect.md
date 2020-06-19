@@ -17,7 +17,7 @@ In this tutorial we will discuss the following:
 ### ZoomConnect Module
 ZoomConnect is a South African based company providing simple and reliable access to bulk SMS solutions for companies, organizations, and individuals.
 
-ZoomConnect exposes a number of API`s to interact with their platform. The ZoomConnect_sdk module is a Python wrapper for these API`s, enabling a developer to use these APIs without struggling through the process of setting up the integration.
+ZoomConnect exposes a number of API's to interact with their platform. The ZoomConnect_sdk module is a Python wrapper for these API's, enabling a developer to use these APIs without struggling through the process of setting up the integration.
 
 To start using ZoomConnect you must first create an account([ZoomConnect](https://www.zoomconnect.com/app/account/signup "ZoomConnect Signup")). Once an account is create login and genarte an API Token. Remember to keep this token safe and secure.
 
@@ -46,47 +46,48 @@ print(accountBalance)
 {% endhighlight %}
 
 The client has a number of functions available to execute specific commands on ZoomConnect. The following functions are available:
-####Account
-*get_account_balance
-*get_account_statistics
-*account_transfer
-*get_account_user_by_email
-*create_account_user
-*update_account_user
-*get_account_user_by_userId
-####SMS
-*get_sms
-*send_sms
-*get_sms_bulk
-*send_sms_bulk
-####Contacts
-*get_contacts_all
-*get_contact
-*create_contact
-*delete_contact
-*update_contact
-*remove_contact_from_group
-*add_contact_to_group
-####Groups
-*get_groups_all
-*get_group
-*create_group
-*update_group
-*delete_group
-*add_group_to_contact
-*remove_group_from_contact
-####Messages
-*get_all_messages
-*get_message_analyses
-*get_message_credit_cost
-*get_message_encoding
-*get_message_length
-*check_message_length_within_max
-*get_number_of_messages
-*get_message
-*delete_message
-*mark_message_as_read
-*mark_message_as_unread
+
+#### Account
+* get_account_balance
+* get_account_statistics
+* account_transfer
+* get_account_user_by_email
+* create_account_user
+* update_account_user
+* get_account_user_by_userId
+#### SMS
+* get_sms
+* send_sms
+* get_sms_bulk
+* send_sms_bulk
+#### Contacts
+* get_contacts_all
+* get_contact
+* create_contact
+* delete_contact
+* update_contact
+* remove_contact_from_group
+* add_contact_to_group
+#### Groups
+* get_groups_all
+* get_group
+* create_group
+* update_group
+* delete_group
+* add_group_to_contact
+* remove_group_from_contact
+#### Messages
+* get_all_messages
+* get_message_analyses
+* get_message_credit_cost
+* get_message_encoding
+* get_message_length
+* check_message_length_within_max
+* get_number_of_messages
+* get_message
+* delete_message
+* mark_message_as_read
+* mark_message_as_unread
 
 ### Send a single SMS message
 To send a single SMS message the following simple code will perform that task for you

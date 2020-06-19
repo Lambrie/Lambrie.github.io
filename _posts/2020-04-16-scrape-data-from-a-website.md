@@ -223,38 +223,28 @@ soup = BeautifulSoup(req.content, 'lxml')
 
 tables = soup.find_all("table", class_="wikitable") 
 # Alternative: tables = soup.find_all("table", {class:"wikitable"})
-for table in tables:
-# Iterate over each table identified with the wikitable class attribute on this HTML page
-    headers = table.find_all("th")
-	# Obtain all header tags in this table
+for table in tables: # Iterate over each table
+    headers = table.find_all("th") # Obtain all header tags in this table
     try:
         if len(headers) == 3:
-            headers = [head.text.replace("\n","") for head in headers]
-			# List comprehension to clean up the header list to a useable string
+            headers = [head.text.replace("\n","") for head in headers] # List comprehension
             if 'Rank' in headers[0] and 'Country' in headers[1] and 'GDP' in headers[2]:
-                tableData = f"{headers[0]}|{headers[1]}|{headers[2]}\n"
-				# Set the headers to be printed out first, before adding the data from the table
+                tableData = f"{headers[0]}|{headers[1]}|{headers[2]}\n" # Set the headers to be printed out first, before adding the data from the table
                 for tr in table.find_all("tr"):
-                    rowValue = ""
-					# Reset the row value on each row iteration before assigning new value to it
+                    rowValue = "" # Reset the row value on each row iteration
                     for td in tr.find_all("td"):
                         rowValue += "{}|".format(td.text.replace('\n','').replace(',',''))
-						# Add row data from td tag
-                    if rowValue: tableData += f"{rowValue} \n"
-					# If a blank line, don`t include in the output
-                print(tableData)
-				# Print the result
-                break
-				# Break the loop, as we are only looking for the first table
+					# Add row data from td tag
+                    if rowValue: tableData += f"{rowValue} \n" # If a blank line, don't include in the output
+                print(tableData) # Print the result
+                break # Break the loop, as we are only looking for the first table
         else:
-            continue
-			# Continue with the loop to check all tables that only contain 3 headers
+            continue # Continue with the loop to check all tables that only contain 3 headers
     except IndexError:
-        continue
-		# Error handling in case index don`t align
+        continue # Error handling in case index don't align
 else:
-    print("Table not found")
-	# If the break is removed from the loop, then the else should be removed.
+    print("Table not found") # If the break is removed from the loop, then the else should be removed.
+	
 {% endhighlight %}
 
 Firstly, we need to import all the modules we will require to scrape this Wikipedia page. We are importing the requests module to make an http request to a website and return its contents. The requests module will act like our browser in this case.
@@ -281,17 +271,16 @@ Once we built up our tableData variable and we have finished the iteration, we w
 The output for this will then be as follow:
 ```
 Rank|Country/Territory|GDP(US$million)
- | World[19]|87265226| 
-1| United States|21439453| 
-—| European Union[23][n 1]|18705132| 
-2| China[n 2]|14140163| 
-3| Japan|5154475| 
-4| Germany|3863344| 
-5| India|2935570| 
-6| United Kingdom|2743586| 
-7| France|2707074| 
-8| Italy|1988636| 
-9| Brazil|1847020| 
+1|  United States|21439453| 
+—|  European Union[23][n 1]|18705132| 
+2|  China[n 2]|14140163| 
+3|  Japan|5154475| 
+4|  Germany|3863344| 
+5|  India|2935570| 
+6|  United Kingdom|2743586| 
+7|  France|2707074| 
+8|  Italy|1988636| 
+9|  Brazil|1847020| 
 10| Canada|1730914| 
 11| Russia[n 3]|1637892| 
 12| Korea South|1629532| 
@@ -302,8 +291,8 @@ Rank|Country/Territory|GDP(US$million)
 17| Netherlands|902355| 
 18| Saudi Arabia|779289| 
 19| Turkey|743708| 
-20|  Switzerland|715360| 
-—| Taiwan|586104| 
+20| Switzerland|715360| 
+— | Taiwan|586104| 
 21| Poland|565854| 
 22| Thailand|529177| 
 23| Sweden|528929| 
@@ -316,7 +305,7 @@ Rank|Country/Territory|GDP(US$million)
 30| United Arab Emirates|405771| 
 31| Israel|387717| 
 32| Ireland|384940| 
-—| Hong Kong|372989| 
+—|  Hong Kong|372989| 
 33| Malaysia|365303| 
 34| Singapore|362818| 
 35| South Africa|358839| 
@@ -345,7 +334,7 @@ Rank|Country/Territory|GDP(US$million)
 58| Morocco|119040| 
 59| Ecuador|107914| 
 60| Slovakia|106552| 
-—| Puerto Rico|99913| 
+—|  Puerto Rico|99913| 
 61| Kenya|98607| 
 62| Angola|91527| 
 63| Ethiopia|91166| 
@@ -367,7 +356,7 @@ Rank|Country/Territory|GDP(US$million)
 79| Syria[n 4]|60043/Na| 
 80| Uruguay|59918| 
 81| Lebanon|58565| 
-—| Macau|55136| 
+—|  Macau|55136| 
 82| Slovenia|54154| 
 83| Lithuania|53641| 
 84| Serbia|51523| 
@@ -387,7 +376,7 @@ Rank|Country/Territory|GDP(US$million)
 98| Sudan|30873| 
 99| Uganda|30666| 
 100| Yemen|29855| 
-101|   Nepal|29813| 
+101| Nepal|29813| 
 102| El Salvador|26871| 
 103| Cambodia|26730| 
 104| Honduras|24449| 
@@ -430,7 +419,7 @@ Rank|Country/Territory|GDP(US$million)
 141| Haiti|8819| 
 142| Kyrgyzstan|8261| 
 143| Tajikistan|8152| 
-—| Kosovo|7996| 
+—|   Kosovo|7996| 
 144| Malawi|7522| 
 145| Maldives|5786| 
 146| Togo|5502| 
@@ -448,7 +437,7 @@ Rank|Country/Territory|GDP(US$million)
 158| Liberia|3221| 
 159| Djibouti|3166| 
 160| Timor-Leste|2938| 
-—| Aruba|2903| 
+—|   Aruba|2903| 
 161| Bhutan|2842| 
 162| Lesotho|2741| 
 163| Central African Republic|2321| 

@@ -90,24 +90,24 @@ Most tags require an open and closing tags, some tags only require an opening ta
 
 The text contained between 2 tags will then be the text that is displayed to the user with the browser. The tags will not be displayed but will only affect how the text between the tags should be displayed. Ex.
 ```html
-<element>Text to display here</>
+<element>Text to display here</element>
 ```
 
 The element name inside the tag is case insensitive and can contain the following names:
-* %3head%3E
-* %3title%3E
-* %3body%3E
-* %3header%3E
-* %3footer%3E
-* %3h1%3E
-* %3p%3E
-* %3table%3E
-* %3div%3E
-* %3span%3E
-* %3nav%3E
-* %3ul%3E
-* %3ol%3E
-* %3li%3E
+* head
+* title
+* body
+* header
+* footer
+* h1
+* p
+* table
+* div
+* span
+* nav
+* ul
+* ol
+* li
 
 This is not all the tags available in HTML, but the commonly used once. During this tutorial we will only be using a few of them
 
@@ -139,22 +139,23 @@ The basic layout of an HTML page will be as follow:
 </html>
 ```
 This is the basic syntax of an HTML webpage. Tags are wrapped inside one another to provide the required structure:
-1. <!DOCTYPE html>: HTML documents must start with a type declaration.
-1. The HTML document is contained between <html> and </html>.
-1. The meta and script declaration of the HTML document is between <head>and </head>.
+1. HTML documents must start with a type declaration - !DOCTYPE html
+1. The HTML document is contained between html tags.
+1. The meta and script declaration of the HTML document is between the head tags.
 1.1. The title tag defines the title of the page and will be displayed as the tab name in the browser.
-1. The visible part of the HTML document is between <body> and </body>tags.
-1.1. Firstly, we will define a navigation bar with the <nav> tag.
-1.1. The navigation bar then consists of an <ul> unordered list tag.
-1.1. The <li> list items will act as buttons on the navigation bar to different pages on this web site
-1. Title headings are defined with the <h1> through <h6> tags, which act as predefined styles for headings.
-1. Paragraphs are defined with the <p> tag.
-1. Images are defined with the <img> tag.
-1. Anything that should appear at the bottom of the screen will be placed in the <footer> tag
+1. The visible part of the HTML document is between the body tags.
+1.1. Firstly, we will define a navigation bar with the nav tag.
+1.1. The navigation bar then consists of an ul unordered list tag.
+1.1. The li list items will act as buttons on the navigation bar to different pages on this web site
+1. Title headings are defined with the h1 through h6 tags, which act as predefined styles for headings.
+1. Paragraphs are defined with the p tag.
+1. Images are defined with the img tag.
+1. Anything that should appear at the bottom of the screen will be placed in the footer tag
 
 <img src="/assets/res/blogData/basic_html_layout.PNG" width="100%">
 
 This might not be what you expected, but we have not assigned any styling to this basic HTML structure. That is where CSS comes into play, which we will not be discussing during this tutorial.
+
 _HTML is the structure of the page layout, where CSS is the styling/decorations on top of the structure and JavaScript produces events and actions for the web page_
 
 #### Attributes
@@ -163,8 +164,8 @@ Each tag can then also contain additional attributes. These attributes will help
 ```html
 <a href="https://www.w3schools.com"><img src="img_girl.jpg" width="500" height="600"></a>
 ```
-The <a> tag contains an attribute which specifies a link to another web page.
-The <image> tag is wrapped inside the <a> tag which contains an attribute regarding how the width and height of the image needs to be rendered and it specifies the source from where the image should be loaded from.
+The a tag contains an attribute which specifies a link to another web page.
+The image tag is wrapped inside the a tag which contains an attribute regarding how the width and height of the image needs to be rendered and it specifies the source from where the image should be loaded from.
 This line will generate the "img_girl.jpeg" image, display it with a resolution of 500x600 and the entire image will be a link to "https://www.w3schools.com" if clicked on.
 
 When it comes to web scraping the most important attributes we will be looking at will be the class and id attributes. These attributes are used to uniquely identify a single tag, like in the case of "id" only 1 tag on the entire html page can have a specific id. Where class is used to uniquely identify multiple tags or a group of tags.

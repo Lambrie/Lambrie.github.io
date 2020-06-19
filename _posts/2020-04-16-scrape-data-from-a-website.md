@@ -94,20 +94,20 @@ The text contained between 2 tags will then be the text that is displayed to the
 ```
 
 The element name inside the tag is case insensitive and can contain the following names:
-* <head>
-* <title>
-* <body>
-* <header>
-* <footer>
-* <h1>
-* <p>
-* <table>
-* <div>
-* <span>
-* <nav>
-* <ul>
-* <ol>
-* <li>
+* %3head%3E
+* %3title%3E
+* %3body%3E
+* %3header%3E
+* %3footer%3E
+* %3h1%3E
+* %3p%3E
+* %3table%3E
+* %3div%3E
+* %3span%3E
+* %3nav%3E
+* %3ul%3E
+* %3ol%3E
+* %3li%3E
 
 This is not all the tags available in HTML, but the commonly used once. During this tutorial we will only be using a few of them
 

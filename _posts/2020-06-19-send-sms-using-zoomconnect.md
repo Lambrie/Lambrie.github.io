@@ -47,7 +47,7 @@ print(accountBalance)
 
 The client has a number of functions available to execute specific commands on ZoomConnect. The following functions are available:
 
-#### Account
+Account
 * get_account_balance
 * get_account_statistics
 * account_transfer
@@ -55,12 +55,12 @@ The client has a number of functions available to execute specific commands on Z
 * create_account_user
 * update_account_user
 * get_account_user_by_userId
-#### SMS
+SMS
 * get_sms
 * send_sms
 * get_sms_bulk
 * send_sms_bulk
-#### Contacts
+Contacts
 * get_contacts_all
 * get_contact
 * create_contact
@@ -68,7 +68,7 @@ The client has a number of functions available to execute specific commands on Z
 * update_contact
 * remove_contact_from_group
 * add_contact_to_group
-#### Groups
+Groups
 * get_groups_all
 * get_group
 * create_group
@@ -76,7 +76,7 @@ The client has a number of functions available to execute specific commands on Z
 * delete_group
 * add_group_to_contact
 * remove_group_from_contact
-#### Messages
+Messages
 * get_all_messages
 * get_message_analyses
 * get_message_credit_cost
@@ -93,7 +93,9 @@ The client has a number of functions available to execute specific commands on Z
 To send a single SMS message the following simple code will perform that task for you
 {% highlight python %}
 from zoomconnect_sdk.client import Client
+
 c = Client(api_token="secret",account_email="secret@keeper.co.za")
+
 try:
     message = c.send_sms("0821231234", "Welcome to ZoomConnect SMS messaging service")
 except Exception as e:
@@ -107,12 +109,14 @@ ZoomConnect allows bulk messages to be sent also with a single api call.
 
 {% highlight python %}
 from zoomconnect_sdk.client import Client
+
 c = Client(api_token='api_token', account_email='account_email')
+
 try:
     recipients = ["0000000000","1111111111","2222222222"]
     messages = ["Hi Joe, Welcome to ZoomConnect SMS messaging service", 
-				"Hi Jane, Welcome to ZoomConnect SMS messaging service", 
-				"Hi John, Welcome to ZoomConnect SMS messaging service"]
+	"Hi Jane, Welcome to ZoomConnect SMS messaging service", 
+	"Hi John, Welcome to ZoomConnect SMS messaging service"]
     message = c.send_sms_bulk(recipients, messages)
 except Exception as e:
     print(e)

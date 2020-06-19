@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Send SMS message using Python and ZoomConnect"
+title:  "Send SMS messages using Python and ZoomConnect"
 date:   2020-06-19 09:35:00 +0200
 categories: SMS
 tags: Python SMS ZoomConnect

@@ -5,7 +5,7 @@ date:   2020-06-08 17:01:00 +0200
 categories: Lambda
 tags: AWS Lambda S3 Python Reportlab
 ---
-Under construction - Use AWS Lambda to generate a PDF document and store the PDF document to S3 and return a signed URL to download the report generated.
+Use AWS Lambda to generate a PDF document and store the PDF document to S3 and return a signed URL to download the report generated.
 
 ### Tutorial Overview
 In this tutorial we will discuss the following:

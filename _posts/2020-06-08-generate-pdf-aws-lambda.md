@@ -13,6 +13,12 @@ In this tutorial we will discuss the following:
 * What is AWS S3
 * Packages
 * Upload Code to AWS Lambda
+* Add python modules to AWS Lambda
+* The function
+* AWS Lambda temp storage
+* How to generate a pdf
+* Provide AWS Lambda permission to access S3
+* Generate a pdf with test data in the console
 
 ### What is AWS Lambda
 [AWS Lambda](https://aws.amazon.com/lambda/ "AWS Lambda") lets you run code without provisioning or managing servers. You pay only for the compute time you consume.
@@ -64,6 +70,11 @@ The ReportLab Toolkit has evolved over the years in direct response to the real-
 * A graphics canvas API that 'draws' PDF pages
 * A charts and widgets library for creating reusable data graphics.
 * A page layout engine - PLATYPUS ("Page Layout and TYPography Using Scripts") - which builds documents from elements such as headlines, paragraphs, fonts, tables and vector graphics.
+
+Create a new project with virtual environment and use pip to install
+```shell
+pip install reportlab
+```
 
 ### Upload Code to AWS Lambda
 
@@ -123,6 +134,13 @@ REPORT RequestId: 81f77177-9063-4229-ba37-bb00372edc8c	Duration: 1.08 ms	Billed 
 ### Add python modules
 In our case we would like to add ReportLab. The easiest way is to create a new project on your local machine, create a virtual environment, add all the required modules and zip the site packages for upload.
 
+The site packages will be located at /venv/Lib/site-packages
+
+You can zip all the packages avalilable in the site-packages, but to keep the size of the zip file down, we can add the following folders into a seperate zip file:
+* PIL
+* Pillow-7.1.2.dist-info
+* reportlab
+* reportlab-3.5.42.dist-info
 
 ### The function
 The lambda function is declared in the handler section. In our case we will keep it to the default as lambda_function.lambda_handler, which refers to the python file lambda_function.py and the lambda_handler function within.
@@ -131,3 +149,77 @@ The lambda function expects 2 parameters, event and context.
 * event  	AWS Lambda uses this parameter to pass in event data to the handler. This parameter is usually of the Python dict type. It can also be list, str, int, float, or NoneType type
 * context 	AWS Lambda uses this parameter to provide runtime information to your handler. For details, see [AWS Lambda context object in Python](https://docs.aws.amazon.com/lambda/latest/dg/python-context.html AWS Lambda context object in Python)
 
+In this tutorial we will not be using the context parameter.
+
+### How to generate a pdf
+Before we look at the code, go to S3 and create a new bucket with the name "lambdapdfs".
+
+The below code will need to be stored in a seperate .py file, named lambda_function.py. 
+
+{% highlight python linenos %}
+import os, boto3
+from datetime import datetime
+from reportlab.pdfgen.canvas import Canvas
+from reportlab.lib.pagesizes import A5
+
+s3_client = boto3.client('s3')
+def generatePDF(event,lambda_path):
+    c = Canvas(lambda_path, pagesize=A5)
+    c.setTitle("My first lambda pdf")
+    c.setAuthor(event.get('name','anonymous'))
+    c.drawString(A5[0]*0.01,A5[1]*0.9, f"{event.get('name','anonymous')}`s First Lambda PDF")
+    return c.getpdfdata() # Return file as bytes
+
+def lambda_handler(event, context):
+    file_name = f"{event.get('name','anonymous')}.pdf" # Name of file and extention
+    lambda_path = f"/tmp/{file_name}" # Temp storage location in Lambda
+    s3_bucket_name = "lambdapdfs" # Name of bucket created in S3
+    s3_path = os.path.join(str(datetime.now().strftime('%Y_%m_%d')),file_name) # Specify the location where file needs to be stored in S3
+    file_created = generatePDF(event, lambda_path) # This method will create the pdf and return the byte information
+    if file_created:
+        with open(lambda_path, "wb") as file:
+            file.write(file_created)
+        try:
+            s3_client.upload_file(lambda_path, s3_bucket_name, s3_path)
+        except ClientError as e:
+            return {"result": "failure", "errorMessage": e}
+        else:
+            os.remove(lambda_path) # Remove file from temp storage in Lambda container
+            return {"result": "success", "errorMessage": None}
+	else:
+        return {"result": "failure", "errorMessage": "No file generated"}
+{% endhighlight %}
+
+*Quick code break down*
+1. The lambda handler will receive the event data as a dictionary. We will then create a file name based on the name key received in the event dictionary.
+1. The temp storage location of aws lambda will be at "/temp". So we will store the lambda location by combining the file name and temp location as "/tmp/Lambrie.pdf"
+1. We will define the s3 bucket name as create at the beginning of this section. The s3 bucket name can also be added as an environment variable and referenced from there.
+1. The S3 location where the file will be stored at in S3 will then be the date the file was generated and the file name as combined in line 1 of the function "/2020_06_08/Lambrie.pdf"
+1. The generatePDF function will then execute the reportlab functions and generate a basic pdf document taking the name received in the event dictionary and adding it to the pdf. The byte data of the pdf will then be returned to the main function.
+1. Once some data is returned from the generatePDFfunction, we will physically write the data to a file in the temp directory.
+1. Once the physical file is created, the boto3 client will upload the file to AWS S3.
+1. If no exception occured a final result can be sent back to the user
+
+This file needs to be added to the zip file generated above containing the information regarding to the external packages that will be needed.
+
+Then upload the file to AWS lambda, in this case the folder is less than 10MB so we can upload the zip file straight into Lambda and we it will not be required to upload it to S3 first.
+
+<img src="/assets/res/blogData/AWS_Lambda_zip_upload.png" width="100%">
+
+### Provide AWS Lambda permission to access S3
+The final step will be to ensure AWS Lambda has sufficient access to S3 to be able to upload the pdf file to S3
+
+Click on the Permissions tab in the AWS Lambda function console
+<img src="/assets/res/blogData/AWS_Lambda_permissions.PNG" width="100%">
+
+Select the current role created for this function. AWS will then take you to Identity and Access Management (IAM) console.
+<img src="/assets/res/blogData/AWS_Lambda_permissions_1.PNG" width="100%">
+
+Click on attach policy, search for S3, select AmazonS3Full Access policy and Attach Policy.
+<img src="/assets/res/blogData/AWS_Lambda_permissions_2.PNG" width="100%">
+
+### Generate a pdf with test data in the console
+Once uploaded and policy adjustments made, we can reuse the same test we used before and click "Test".
+
+You should see the following result in the console:
+<img src="/assets/res/blogData/AWS_Lambda_final_test.PNG" width="100%">

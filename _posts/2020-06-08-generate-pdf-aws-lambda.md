@@ -26,13 +26,13 @@ In this tutorial we will discuss the following:
 With Lambda, you can run code for virtually any type of application or backend service - all with zero administration. Just upload your code and Lambda takes care of everything required to run and scale your code with high availability. You can set up your code to automatically trigger from other AWS services or call it directly from any web or mobile app.
 
 The benefits of using AWS Lambda are:
-**No servers to manage
+**No servers to manage**
 AWS Lambda automatically runs your code without requiring you to provision or manage servers. Just write the code and upload it to Lambda.
-**Continuous Scaling
+**Continuous Scaling**
 AWS Lambda automatically scales your application by running code in response to each trigger. Your code runs in parallel and processes each trigger individually, scaling precisely with the size of the workload.
-**Subsecond Metering
+**Subsecond Metering**
 With AWS Lambda, you are charged for every 100ms your code executes and the number of times your code is triggered. You pay only for the compute time you consume.
-**Consistent Performance
+**Consistent Performance**
 With AWS Lambda, you can optimize your code execution time by choosing the right memory size for your function. You can also enable Provisioned Concurrency to keep your functions initialized and hyper-ready to respond within double digit milliseconds.
 
 AWS provides a free tier, which is more than enough to get started and play around without any [cost](https://aws.amazon.com/lambda/pricing/ "AWS Pricing") up front. They provide 1 million free requests per month and 400,000 GB-seconds of compute time per month.
@@ -41,17 +41,17 @@ AWS provides a free tier, which is more than enough to get started and play arou
 Amazon Simple Storage Service ([AWS S3](https://aws.amazon.com/s3/ "AWS S3")) is an object storage service that offers industry-leading scalability, data availability, security, and performance. This means customers of all sizes and industries can use it to store and protect any amount of data for a range of use cases, such as websites, mobile applications, backup and restore, archive, enterprise applications, IoT devices, and big data analytics. Amazon S3 provides easy-to-use management features so you can organize your data and configure finely-tuned access controls to meet your specific business, organizational, and compliance requirements. Amazon S3 is designed for 99.999999999% (11 9's) of durability, and stores data for millions of applications for companies all around the world.
 
 The benefits of using AWS S3 are:
-**Industry-leading performance, scalability, availability, and durability
+**Industry-leading performance, scalability, availability, and durability**
 Scale your storage resources up and down to meet fluctuating demands, without upfront investments or resource procurement cycles. 
-**Wide range of cost-effective storage classes
+**Wide range of cost-effective storage classes**
 Save costs without sacrificing performance by storing data across the S3 Storage Classes, which support different data access levels at corresponding rates.
-**Unmatched security, compliance, and audit capabilities
+**Unmatched security, compliance, and audit capabilities**
 Store your data in Amazon S3 and secure it from unauthorized access with encryption features and access management tools
-**Easily manage data and access controls
+**Easily manage data and access controls**
 S3 gives you robust capabilities to manage access, cost, replication, and data protection
-**Query-in-place services for analytics
+**Query-in-place services for analytics**
 Run big data analytics across your S3 objects (and other data sets in AWS) with our query-in-place services
-**Most supported cloud storage service
+**Most supported cloud storage service**
 Store and protect your data in Amazon S3 by working with a partner from the AWS Partner Network (APN) — the largest community of technology and consulting cloud services providers
 
 AWS also provides a [free tier](https://aws.amazon.com/s3/pricing "AWS Pricing") for S3. Upon sign-up, new AWS customers receive 5GB of Amazon S3 storage in the S3 Standard storage class; 20,000 GET Requests; 2,000 PUT, COPY, POST, or LIST Requests; and 15GB of Data Transfer Out each month for one year.

@@ -7,6 +7,8 @@ tags: Python SMS ZoomConnect
 ---
 How to use the ZoomConnect module in Python to send SMS messages
 
+<img src="/assets/res/blogData/python_zoom_connect.PNG" width="100%">
+
 ### Tutorial Overview
 In this tutorial we will discuss the following:
 * ZoomConnect Module

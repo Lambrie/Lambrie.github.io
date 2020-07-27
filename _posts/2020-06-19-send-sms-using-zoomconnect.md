@@ -28,6 +28,8 @@ Download the [ZoomConnect_sdk](https://pypi.org/project/zoomconnect-sdk/0.0.1/) 
 pip install zoomconnect-sdk==0.0.1
 ```
 
+{% include in_post_advertisements.html %}
+
 ### Getting started
 Once the package is installed, it's simple to get going.
 

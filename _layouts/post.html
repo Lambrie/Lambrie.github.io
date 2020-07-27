@@ -40,11 +40,11 @@ js: ["post.js"]
 <div class="divider"></div>
 <div class="row">
   <div class="col s12">
-  {% include advertisements.html %}
     {{ content }}
   </div>
 </div>
 <a class="bmc-button" target="_blank" href="https://www.buymeacoffee.com/lambriesteyn"><img src="https://cdn.buymeacoffee.com/buttons/bmc-new-btn-logo.svg" alt="Buy me a coffee"><span style="margin-left:15px;font-size:28px !important;">Buy me a coffee</span></a>
+{% include advertisements.html %}
 {% if site.disqus_shortname and page.comments %}
 <div id="disqus_thread"></div>
 <script>

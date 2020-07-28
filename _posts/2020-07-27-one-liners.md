@@ -98,3 +98,15 @@ if title := request.get("title"): print(f'Found title: "{title}"')
 ```
 Found title: "titleName"
 ```
+
+This is not exactly a one-liner, but I found it sexy and wanted to add it
+{% highlight python %}
+word = "Lambo"
+if (palindrome := word[::-1]) == word: print(f"{word} is equal to {palindrome}")
+else: print(f"{word} is not equal to {palindrome}")
+{% endhighlight %}
+```
+Lambo is not equal to obmaL
+```
+
+

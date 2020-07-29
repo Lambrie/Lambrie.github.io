@@ -1,17 +1,17 @@
 ---
 layout: post
-title: "Elegent Python one-liners"
+title: "If requirement one-liners could be as powerful as Python one-liners ..."
 date: 2020-07-27 15:10:00 +0200
 categories: Python
 tags: One-Liners
 ---
-Simple is better than complex and flat is better than nested, but sparse is better than nested and as always readability counts.
+Simple is better than complex, but sparse is better than nested and as always readability counts.
 
-Python one-liners are commonly used by Python developers to perform a single function quickly. They can reduce code complexity by performing a function within a single line which might have taken up several more lines, like small loops. 
+Python one-liners are commonly used by Python developers to perform a single function quickly. They can reduce code complexity by performing a specific outcome within a single line of code which might have taken up several more lines. 
 {% highlight python %}
-print([number for number in range(100) if number % 2 == 0])
+evenNumbers = [number for number in range(100) if number % 2 == 0]
 {% endhighlight %}
-So Python one-liners can bring around some form om simplicty in your code layout, but then again it can be a barrier to understanding your code as some one-liners can truely be a nested mess and it can bring down the overall readability of your code if to long and nested.
+So Python one-liners can bring around some form om simplicty in your code layout, but then again it can be a barrier to understanding your code as some one-liners can truely be a nested mess and it can bring down the overall readability of your code if to long and overly nested.
 {% highlight python %}
 print('\n'.join("%i bytes = %i bits which has %i possible values." % (j, j*8, 256**j-1) for j in (1 << i for i in range(8))))
 {% endhighlight %}

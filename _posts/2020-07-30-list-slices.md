@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Python Slicing Intro"
+title: "Python Slicing[0::]"
 date: 2020-07-30 08:57:00 +0200
 categories: Python
 tags: Slices Lists

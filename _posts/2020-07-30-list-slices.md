@@ -32,6 +32,10 @@ Index position:   0   1   2   3   4   5
 How to get a single item from a list. I will not consider it to be a slice as it does not followin the slice convention, but it is technically stil a small slice.
 {% highlight python %}
 lst = [1,2,3,4,5,6,7,8,9,10]
+{% endhighlight %}
+We will be using the above list variable throughout
+
+{% highlight python %}
 lst[0] # first item
 1
 lst[-1] # last item - same as lst[len(lst)-1]

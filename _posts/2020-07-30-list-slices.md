@@ -18,6 +18,13 @@ list[start:stop:step]
 {% endhighlight %}
 
 Just remember how list index works, index always starts at 0 which usually makes the last index the length or count of the list minus 1
+```
+                +---+---+---+---+---+---+
+                | P | y | t | h | o | n |
+                +---+---+---+---+---+---+
+Slice position: 0   1   2   3   4   5   6
+Index position:   0   1   2   3   4   5
+```
 
 {% include in_post_advertisements.html %}
 

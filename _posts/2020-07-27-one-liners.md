@@ -22,7 +22,7 @@ The following python concepts can be used to build powerful one liners:
 * Walrus Operator (3.8+)
 * Ternary Operator
 * Built in functions
-* Slice Notation
+* [Slice Notation] (https://lambrie.github.io/2020/07/30/list-slices)
 
 {% include in_post_advertisements.html %}
 

@@ -5,7 +5,7 @@ date: 2020-07-30 08:57:00 +0200
 categories: Python
 tags: Slices Lists
 ---
-The Python slice notation makes it very easy to access sub lists from an existing list.
+The Python slice notation makes it very easy to access sub-lists from an existing list.
 
 Using the square bracket notation [ ] at the end of any list enables one to quickly create a subset. The square brackets expect a minimum of 2 parameters and an optional third parameter.
 Can you guess what the 2 parameters will be? Yeah sure a start and stop parameter. Like anything you want to slice in life you need to know from where to where and then an increment / interval if not the default of 1

@@ -30,7 +30,7 @@ Some useful one-liners I have come across:
 
 Get all the even numbers from a list, using a list comprehension
 {% highlight python %}
-evenNumbers = [number for number in range(100) if number % 2 == 0]
+evenNumbers = [number for number in range(10) if number % 2 == 0]
 {% endhighlight %}
 ```
 [0, 2, 4, 6, 8]

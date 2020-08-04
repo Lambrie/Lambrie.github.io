@@ -7,7 +7,7 @@ tags: One-Liners
 ---
 Simple is better than complex, but sparse is better than nested and as always readability counts.
 
-Python one-liners are commonly used by Python developers to perform a single function quickly. They can reduce code complexity by performing a specific outcome within a single line of code which might have taken up several more lines. 
+Python one-liners are commonly used by Python developers to perform a single function in a single line of code. They can reduce code complexity by performing a specific outcome within a single line of code which might have taken up several more lines. 
 {% highlight python %}
 evenNumbers = [number for number in range(100) if number % 2 == 0]
 {% endhighlight %}

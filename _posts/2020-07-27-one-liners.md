@@ -18,7 +18,7 @@ print('\n'.join("%i bytes = %i bits which has %i possible values." % (j, j*8, 25
 
 The following python concepts can be used to build powerful one liner:
 * [List Comprehensions](https://www.youtube.com/watch?v=P39Fqjqv5qY)
-* Lambda Functions / Anonymous Functions
+* [Lambda Functions / Anonymous Functions](https://lambrie.github.io/2020/08/19/lambda-functions)
 * Walrus Operator (3.8+)
 * Ternary Operator
 * Built in functions

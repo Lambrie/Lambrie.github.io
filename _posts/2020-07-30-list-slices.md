@@ -26,8 +26,6 @@ Slice position: 0   1   2   3   4   5   6
 Index position:   0   1   2   3   4   5
 ```
 
-{% include in_post_advertisements.html %}
-
 #### Get a single item from a list
 How to get a single item from a list. I will not consider it to be a slice as it does not follow the slice convention, but it is technically still a small slice.
 {% highlight python %}

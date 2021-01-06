@@ -24,8 +24,6 @@ The following python concepts can be used to build powerful one liner:
 * Built in functions
 * [Slice Notation](https://lambrie.github.io/2020/07/30/list-slices)
 
-{% include in_post_advertisements.html %}
-
 Some useful one-liners I have come across:
 
 Get all the even numbers from a list, using a list comprehension

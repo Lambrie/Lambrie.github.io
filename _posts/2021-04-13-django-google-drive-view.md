@@ -1,11 +1,10 @@
 ---
 layout: post
-title: "Django - View file from Google Drive in Browser"
+title: "Django view file from Google Drive in Browser"
 date: 2021-04-13 11:17:00 +0200
 categories: Python
-tags: "Django" "Google Drive" "django-googledrive-storage"
+tags: Django Google Drive django-googledrive-storage
 ---
-
 Django can easily load files onto the server for storage, but what if local storage is a big limitation?
 
 Best alternative is to upload files straight to a cloud provider. A number of cloud providers can be used and integrated into with minimal effort. In this specifc use case we used Google Drive as our storage backend.
@@ -20,10 +19,11 @@ In my work around I tried both approaches:
 Changing the absolute url parameter with a replace was the easyist. Click on the below links to see the difference
 
 https://drive.google.com/uc?id=1VPPSJ-wLJrimsVbjv_xqhaAvLsCfUZYC&export=download
+
 https://drive.google.com/uc?id=1VPPSJ-wLJrimsVbjv_xqhaAvLsCfUZYC&export=view
 
 model.py
-```
+{% highlight python %}
 from django.db import models
 from gdstorage.storage import GoogleDriveStorage
 gd_storage = GoogleDriveStorage()
@@ -34,7 +34,7 @@ class Attachment(models.Model):
 	
     def url_view(self):
         return self.attachment.url.replace("download", "view")
-```
+{% endhighlight %}
 
 1. Obatin the Google Web View Link for Goolgle Drive
 Using the below link provided by the Google Drive API enhances the user experieince in brower, by loading the image or file in the Google Drive frame.
@@ -42,7 +42,7 @@ Using the below link provided by the Google Drive API enhances the user experiei
 https://drive.google.com/file/d/1VPPSJ-wLJrimsVbjv_xqhaAvLsCfUZYC/view?usp=drivesdk
 
 model.py
-```
+{% highlight python %}
 from django.db import models
 from gdstorage.storage import GoogleDriveStorage
 gd_storage = GoogleDriveStorage()
@@ -53,12 +53,12 @@ class Attachment(models.Model):
 	
     def url_view(self):
         return gd_storage._check_file_exists(self.attachment.name)["webViewLink"]
-```
+{% endhighlight %}
 
 A pull request has been submitted to django-googledrive-storage at time of writing. Once change is implemented the above piece can be implemented using:
 
 model.py
-```
+{% highlight python %}
 from django.db import models
 from gdstorage.storage import GoogleDriveStorage
 gd_storage = GoogleDriveStorage()
@@ -69,4 +69,4 @@ class Attachment(models.Model):
 	
     def url_view(self):
         return gd_storage.url_web_view(self.attachment.name)
-```
+{% endhighlight %}

@@ -18,9 +18,9 @@ In my work around I tried both approaches:
 1. Change parameter to view
 Changing the absolute url parameter with a replace was the easyist. Click on the below links to see the difference
 
-https://drive.google.com/uc?id=1VPPSJ-wLJrimsVbjv_xqhaAvLsCfUZYC&export=download
+[https://drive.google.com/uc?id=1VPPSJ-wLJrimsVbjv_xqhaAvLsCfUZYC&export=download](https://drive.google.com/uc?id=1VPPSJ-wLJrimsVbjv_xqhaAvLsCfUZYC&export=download)
 
-https://drive.google.com/uc?id=1VPPSJ-wLJrimsVbjv_xqhaAvLsCfUZYC&export=view
+[https://drive.google.com/uc?id=1VPPSJ-wLJrimsVbjv_xqhaAvLsCfUZYC&export=view](https://drive.google.com/uc?id=1VPPSJ-wLJrimsVbjv_xqhaAvLsCfUZYC&export=view)
 
 model.py
 {% highlight python %}
@@ -39,7 +39,8 @@ class Attachment(models.Model):
 1. Obatin the Google Web View Link for Goolgle Drive
 Using the below link provided by the Google Drive API enhances the user experieince in brower, by loading the image or file in the Google Drive frame.
 
-https://drive.google.com/file/d/1VPPSJ-wLJrimsVbjv_xqhaAvLsCfUZYC/view?usp=drivesdk
+[https://drive.google.com/file/d/1VPPSJ-wLJrimsVbjv_xqhaAvLsCfUZYC/view?usp=drivesdk](https://drive.google.com/file/d/1VPPSJ-wLJrimsVbjv_xqhaAvLsCfUZYC/view?usp=drivesdk)
+
 
 model.py
 {% highlight python %}

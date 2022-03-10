@@ -5,19 +5,19 @@ date: 2022-03-08 13:50:00 +0200
 categories: Azure Data Factory
 tags: Azure ADF 
 ---
-Moving Jira data into a data warehouse is not difficult task for both cloud or on-prem deployment, but what about a heavily customized Jira instance?
+Moving Jira data into a data warehouse is not difficult task for both cloud or on-prem deployments, but what about a heavily customized Jira instances?
 
-Atlassian gives their users the option to customize their own Jira deployment according to their own business needs. So as you can imagine a number of interesting Jira instances can be concocted by businesses. This in turn leads to inconsitent and non standard fields and tables being injected into the application.
+Atlassian gives their users the option to customize their own Jira deployment according to their own business needs. So as you can imagine a number of interesting Jira instances can be concocted by businesses. This in turn leads to inconsistent and non standard fields and tables being injected into the application.
 
-Luckly, Jira contains most of the customisations to a single table in the postgress database and they follow the same data flow as standard Jira components :)
+Luckily, Jira contains most of the customisations to a single table in the postgress database and they follow the same data flow as standard Jira components :)
 
 But, should we be accessing the database directly of such a configurable system in the first place? 
 
-Applications that provides such a level of flexibity to their consumers tend to have a strange denormalized database schemas that forces a normalized view through the applications logic layer. Trying to reverse engineer the application logic from the database up for a datawarehouse is always a tough ask. Surely Jira provide an easier why to interact and obtain data from Jira? 
+Applications that provides such a level of flexibility to their consumers tend to have a strange denormalized database schemas that forces a normalized view through the applications logic layer. Trying to reverse engineer the application logic from the database up for a data warehouse is always a tough ask. Surely Jira provide an easier why to interact and obtain data from Jira? 
 
-Enter the standard Azure Data Factory Jira connector. The connector is a wrapper for the Jira API to access all jira data without having to deal with the complexities of the database schema. Without the ADF Jira connector, a postgress connector should be used to connect directly to the database. Besides the complexity of reverse engineering the database schemas, with this approach you will also only be able to access on-prem Jira and not Jira Cloud.
+Enter the standard Azure Data Factory Jira connector. The connector is a wrapper for the Jira API to access all Jira data without having to deal with the complexities of the database schema. Without the ADF Jira connector, a postgress connector should be used to connect directly to the database. Besides the complexity of reverse engineering the database schemas, with this approach you will also only be able to access on-prem Jira and not Jira Cloud.
 
-Lets get started, first create a new linked service for Jira on ADF, by searching for jira in the linked services
+Lets get started, first create a new linked service for Jira on ADF, by searching for Jira in the linked services
 
 <img src="/assets/res/blogData/ADF/jira_adf_1.PNG" width="100%">
 
@@ -25,7 +25,7 @@ Setup the connection details to the Jira instance
 
 <img src="/assets/res/blogData/ADF/jira_adf_2.PNG" width="100%">
 
-Test your connection to ensure successfull connection
+Test your connection to ensure successful connection
 
 <img src="/assets/res/blogData/ADF/jira_adf_3.PNG" width="100%">
 

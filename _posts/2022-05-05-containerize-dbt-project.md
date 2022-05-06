@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Containerize DBT project"
+title: "Containerize your DBT project"
 date: 2022-05-06 10:37:00 +0200
 categories: DBT Docker
 tags: DBT Docker

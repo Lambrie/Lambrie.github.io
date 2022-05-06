@@ -65,7 +65,7 @@ Docker file breakdown:
 Note:
 When defining the image to pull, specify the version to use. The latest tag gives and error
 
-You will notice that we have specified an entrypoint parameter for the dockerfile, this will invoke shell script to execute the dbt commands we need for our project. Because we have multiple DBT commands we would like to execute in a specific order, we need to invoke it via a shell script
+You will notice that we have specified an entrypoint parameter for the dockerfile, this will invoke a shell script to execute the dbt commands we need for our project. Because we have multiple DBT commands we would like to execute in a specific order, we need to invoke it via a shell script
 
 {% highlight cmd %}
 #!/bin/sh

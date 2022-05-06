@@ -5,7 +5,7 @@ date: 2022-05-06 10:37:00 +0200
 categories: DBT Docker
 tags: DBT Docker
 ---
-DBT is an amazing tool to use. If you don't know what DBT is just unravel the acronym and you will have a good understanding of it, Data Build Tool.
+If you don't know what DBT is just unravel the acronym and you will have a good understanding of it, Data Build Tool.
 
 DBT focusses on the transformation part within ETL, and it combines a host of best practises and tools from Data and Software Engineering.
 

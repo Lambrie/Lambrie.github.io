@@ -45,7 +45,7 @@ project_name:
 
 Next step, lets create the dockerfile in your project directory
 
-{% highlight yml %}
+{% highlight cmd %}
 FROM fishtownanalytics/dbt:1.0.0
 
 WORKDIR /project_name
@@ -90,19 +90,20 @@ We also specify the target directory, because we would like to override the defa
 
 For a full list of all DBT commands please refer to their documentation [DBT Commands](https://docs.getdbt.com/reference/dbt-commands)
 
-Your project directory should look like this
+Your project directory should look like this 
+
 <img src="/assets/res/blogData/dbt/dbt_docker_project_layout.PNG" width="50%">
 
 Then we can build the docker image
 
 {% highlight cmd %}
-docker build --pull --rm -t dbt_project_name:latest
+docker build -t dbt_project_name:latest
 {% endhighlight %}
 
 And or run the container
 
 {% highlight cmd %}
-docker run --rm -it dbt_project_name:latest
+docker run dbt_project_name:latest
 {% endhighlight %}
 
 Happy data transformations, you analytics engineer you!

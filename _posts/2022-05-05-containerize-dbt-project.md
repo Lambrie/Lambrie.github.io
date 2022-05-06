@@ -9,7 +9,7 @@ DBT is an amazing tool to use. If you don't know what DBT is just unravel the ac
 
 DBT focusses on the transformation part within ETL, and it combines a host of best practises and tools from Data and Software Engineering.
 
-Without going into to much detail what DBT is and where it is used, I would rather like to focus this article on the productionilation component of DBT. DBT is amazing and really works great when running from your local machine, but how should this look like in a production environment. This article will show you how to run DBT in a docker container, how and where you run your container is up to you.
+Without going into to much detail what DBT is and where it is used, I would rather like to focus this article on the productionalization component of DBT. DBT is amazing and really works great when running from your local machine, but how should this look like in a production environment. This article will show you how to run DBT in a docker container, how and where you run your container is up to you.
 
 First you will need to create a profile.yml file in your project directory. We will inject the profile.yml file when executing the DBT commands. Because DBT will by default search for your profile.yml file in your ~/.dbt folder, which we won’t have in the container.
 

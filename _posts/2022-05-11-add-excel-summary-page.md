@@ -34,6 +34,10 @@ df_summary = pd.concat(df_list).reset_index()
 
 # Summarize all data from all sheets according to the sheet name
 df_summary = df_summary.groupby(['Year']).mean()
+
+# Remove the index column
+df_summary.drop(['index'], axis=1, inplace=True, errors='ignore')
+
 ################################## New Excel File ##################################
 with pd.ExcelWriter('demo_data_summary.xlsx') as writer:
     # Create the excel hyperlink formatting

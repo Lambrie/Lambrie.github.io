@@ -15,7 +15,7 @@ pip install xlsxwriter
 {% highlight python %}
 import pandas as pd
 import xlsxwriter
-
+################################## Load Excel File ##################################
 # Create a dictionary for dataframes to be obtained from each sheet
 df_list = {}
 # Open excel file using built in excel reader provided by Pandas
@@ -34,7 +34,7 @@ df_summary = pd.concat(df_list).reset_index()
 
 # Summarize all data from all sheets according to the sheet name
 df_summary = df_summary.groupby(['Year']).mean()
-
+################################## New Excel File ##################################
 with pd.ExcelWriter('demo_data_summary.xlsx') as writer:
     # Create the excel hyperlink formatting
     hyperlink_formatting = writer.book.add_format({'underline': True, 'font_color': 'blue'})
@@ -53,7 +53,8 @@ with pd.ExcelWriter('demo_data_summary.xlsx') as writer:
         # Convert the next available column to excel syntax 65 -> A
         excel_column = chr(65+(column_length))
         # Add hyperlink back to the summary page
-        worksheet.write_formula(f'{excel_column}1', f'=IFERROR(HYPERLINK("#summary!A1","Back"),"")')
+        worksheet.write_formula(f'{excel_column}1'\
+							, f'=IFERROR(HYPERLINK("#summary!A1","Back"),"")')
         # Apply hyperlink formatting to column
         worksheet.set_column(f'{excel_column}:{excel_column}',10,hyperlink_formatting)
 

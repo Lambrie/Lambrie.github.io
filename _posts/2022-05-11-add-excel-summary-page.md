@@ -15,9 +15,8 @@ pip install xlsxwriter
 {% highlight python %}
 import pandas as pd
 import xlsxwriter
-#region Load Excel File
 
-# Create a list for dataframes to be obtained from each sheet
+# Create a dictionary for dataframes to be obtained from each sheet
 df_list = {}
 # Open excel file using built in excel reader provided by Pandas
 with pd.ExcelFile('demo_data.xlsx') as file:
@@ -27,7 +26,7 @@ with pd.ExcelFile('demo_data.xlsx') as file:
         df = pd.read_excel(file, sheet_name=str(sheet))
         # Add the sheet name as a column to the dataframe
         df["Year"] = int(sheet)
-        # Add the dataframe into a dictionary
+        # Add the dataframe into a dictionary to preserve the sheet name
         df_list[sheet] = df
 
 # Concats all the dataframes in the list into a single dataframe

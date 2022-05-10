@@ -53,7 +53,7 @@ with pd.ExcelWriter('demo_data_summary.xlsx') as writer:
         # Convert the next available column to excel syntax 65 -> A
         excel_column = chr(65+(column_length))
         # Add hyperlink back to the summary page
-        worksheet.write_formula(f'{excel_column}1' \,f'=IFERROR(HYPERLINK("#summary!A1","Back"),"")')
+        worksheet.write_formula(f'{excel_column}1' \		,f'=IFERROR(HYPERLINK("#summary!A1","Back"),"")')
         # Apply hyperlink formatting to column
         worksheet.set_column(f'{excel_column}:{excel_column}',10,hyperlink_formatting)
 
